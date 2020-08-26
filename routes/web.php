@@ -15,4 +15,3 @@ Route::auth();
 Route::get('/', 'HomeController@index')->name('dashboard');
 
 
-
