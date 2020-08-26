@@ -16,5 +16,11 @@ class DatabaseSeeder extends Seeder
             'password' => \Illuminate\Support\Facades\Hash::make('secret'),
             'email' => 'admin@firecert.com'
         ]);
+
+        $this->call(PremiseTypeSeeder::class);
+
+        $this->call(PremiseCategorySeeder::class);
+
+        $this->call(ZoneSeeder::class);
     }
 }
