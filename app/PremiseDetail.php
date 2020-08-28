@@ -6,14 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
- * @property integer $city_id
  * @property integer $premise_type_id
  * @property integer $premise_category_id
  * @property integer $office_id
  * @property string $name
- * @property string $address_1
- * @property string $address_2
- * @property int $postcode
+ * @property string $address
  * @property string $phone_number
  * @property string $fax_number
  * @property boolean $ert
@@ -23,10 +20,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $fc_phone
  * @property string $created_at
  * @property string $updated_at
- * @property City $city
  * @property Office $office
  * @property PremiseCategory $premiseCategory
  * @property PremiseType $premiseType
+ * @property FcApplication[] $fcApplications
  */
 class PremiseDetail extends Model
 {
@@ -40,15 +37,7 @@ class PremiseDetail extends Model
     /**
      * @var array
      */
-    protected $fillable = ['city_id', 'premise_type_id', 'premise_category_id', 'office_id', 'name', 'address_1', 'address_2', 'postcode', 'phone_number', 'fax_number', 'ert', 'pic_name', 'pic_phone', 'fc_name', 'fc_phone', 'created_at', 'updated_at'];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function city()
-    {
-        return $this->belongsTo('App\City');
-    }
+    protected $fillable = ['premise_type_id', 'premise_category_id', 'office_id', 'name', 'address', 'phone_number', 'fax_number', 'ert', 'pic_name', 'pic_phone', 'fc_name', 'fc_phone', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -72,5 +61,13 @@ class PremiseDetail extends Model
     public function premiseType()
     {
         return $this->belongsTo('App\PremiseType');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fcApplications()
+    {
+        return $this->hasMany('App\FcApplication', 'premis_detail_id');
     }
 }
