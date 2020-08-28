@@ -16,13 +16,13 @@ class CreatePremiseDetailsTable extends Migration
         Schema::create('premise_details', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address_1');
-            $table->string('address_2');
-            $table->unsignedBigInteger('city_id');
-            $table->integer('postcode');
+            $table->string('address');
+//            $table->string('address_2');
+//            $table->unsignedBigInteger('city_id');
+//            $table->integer('postcode');
             $table->string('phone_number');
             $table->string('fax_number');
-            $table->boolean('ert');
+            $table->boolean('ert')->nullable();
             $table->string('pic_name');
             $table->string('pic_phone');
             $table->string('fc_name');
@@ -35,7 +35,7 @@ class CreatePremiseDetailsTable extends Migration
             $table->foreign('premise_type_id')->references('id')->on('premise_types');
             $table->foreign('premise_category_id')->references('id')->on('premise_categories');
             $table->foreign('office_id')->references('id')->on('offices');
-            $table->foreign('city_id')->references('id')->on('cities');
+//            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 

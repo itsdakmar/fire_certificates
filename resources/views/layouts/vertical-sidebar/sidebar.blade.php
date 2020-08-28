@@ -14,19 +14,7 @@
         <div class="side-nav">
 
             <div class="main-menu">
-
-                <!-- <ul>
-                            <li>
-                                <a href="*" class="active-color">
-                                    <span class="item-name ">Dashboard</span>
-                                    <span class="spacer"></span>
-                                    <span class="item-badge badge badge-warning">100+</span>
-                                </a>
-                            </li>
-
-                        </ul> -->
                 <ul class="metismenu" id="menu">
-                    <!-- <p class="main-menu-title text-muted ml-3 font-weight-700 text-13 mt-4 mb-2">Apps</p> -->
                     <li class="Ul_li--hover">
                         <a class=" " href="#">
                             <i class="i-Home-Window text-20 mr-2 text-muted"></i>
@@ -36,12 +24,11 @@
                     <li class="Ul_li--hover">
                         <a class="has-arrow" href="#">
                             <i class="i-Building text-20 mr-2 text-muted"></i>
-
                             <span class="item-name  text-muted">Premis</span>
                         </a>
                         <ul class="mm-collapse">
                             <li class="item-name">
-                                <a href="alerts.html">
+                                <a href="{{ route('premise.index') }}">
                                     <i class="nav-icon i-Data"></i>
                                     <span class="item-name">Maklumat Premis</span>
                                 </a>

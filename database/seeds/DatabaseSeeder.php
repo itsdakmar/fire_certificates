@@ -18,9 +18,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(PremiseTypeSeeder::class);
-
         $this->call(PremiseCategorySeeder::class);
-
         $this->call(ZoneSeeder::class);
+        $this->call(StateCitySeeder::class);
     }
 }
