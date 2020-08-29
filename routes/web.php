@@ -19,3 +19,6 @@ Route::post('/premise/import', 'PremiseController@upload')->name('premise.upload
 Route::get('/premise/data', 'PremiseController@data')->name('premise.data');
 
 
+Route::get('/application', 'FcApplicationController@index')->name('application.index');
+Route::get('/application/create', 'FcApplicationController@create')->name('application.create');
+Route::post('/application/store', 'FcApplicationController@store')->name('application.store');

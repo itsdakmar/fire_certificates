@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ZoneSeeder::class);
         $this->call(StateCitySeeder::class);
         $this->call(OfficeSeeder::class);
+        $this->call(PremiseDetailSeeder::class);
 
     }
 }
