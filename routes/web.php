@@ -14,7 +14,8 @@ Route::auth();
 
 Route::get('/', 'HomeController@index')->name('dashboard');
 Route::get('/premise', 'PremiseController@index')->name('premise.index');
-Route::get('/premise/import/premise', 'PremiseController@excel')->name('premise.excel');
-Route::post('/premise/import/premise', 'PremiseController@upload')->name('premise.upload');
+Route::get('/premise/import', 'PremiseController@excel')->name('premise.excel');
+Route::post('/premise/import', 'PremiseController@upload')->name('premise.upload');
+Route::get('/premise/data', 'PremiseController@data')->name('premise.data');
 
 
