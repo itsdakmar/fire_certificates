@@ -1,16 +1,8 @@
 @extends('layouts.master')
 @section('page-css')
-    <link rel="stylesheet" href="http://gull-html-laravel.test/assets/styles/vendor/datatables.min.css">
+    <link rel="stylesheet" href={{ asset('/assets/styles/vendor/datatables.min.css') }}>
 @endsection
 @section('main-content')
-    <div class="breadcrumb">
-        <h1>Sistem Pengurusan Perakuan BOMBA</h1>
-        <ul>
-            <li>JBPM Negeri Melaka</li>
-        </ul>
-    </div>
-
-    <div class="separator-breadcrumb border-top"></div>
 
     <div class="row">
         <div class="col mb-4">
@@ -64,7 +56,7 @@
 @endsection
 
 @section('page-js')
-    <script src="http://gull-html-laravel.test/assets/js/vendor/datatables.min.js"></script>
+    <script src={{ asset('assets/js/vendor/datatables.min.js') }}></script>
     <script>
         $(document).ready(function () {
             $('#premise-table').DataTable({

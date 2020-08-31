@@ -42,5 +42,26 @@ class PremiseController extends Controller
             ->make(true);
     }
 
+    public function getPremise(Request $request) {
+        $search = $request->search;
+
+        if($search == ''){
+            $premisedetails = PremiseDetail::orderby('name','asc')->select('id','name')->limit(30)->get();
+        }else{
+            $premisedetails = PremiseDetail::orderby('name','asc')->select('id','name')->where('name', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+
+        $response = array();
+        foreach($premisedetails as $premisedetail){
+            $response[] = array(
+                "id"=>$premisedetail->id,
+                "text"=>$premisedetail->name
+            );
+        }
+
+        echo json_encode($response);
+        exit;
+    }
+
 
 }

@@ -22,3 +22,5 @@ Route::get('/premise/data', 'PremiseController@data')->name('premise.data');
 Route::get('/application', 'FcApplicationController@index')->name('application.index');
 Route::get('/application/create', 'FcApplicationController@create')->name('application.create');
 Route::post('/application/store', 'FcApplicationController@store')->name('application.store');
+
+Route::post('/premise/getPremise/','PremiseController@getPremise')->name('premise.getPremise');

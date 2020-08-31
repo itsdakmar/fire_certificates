@@ -16,7 +16,7 @@
             <div class="main-menu">
                 <ul class="metismenu" id="menu">
                     <li class="Ul_li--hover">
-                        <a class=" " href="#">
+                        <a class=" " href="{{ route('dashboard') }}">
                             <i class="i-Home-Window text-20 mr-2 text-muted"></i>
                             <span class="item-name  text-muted">Laman Utama</span>
                         </a>
@@ -40,20 +40,20 @@
                         <a class="has-arrow" href="#">
                             <i class="i-Library text-20 mr-2 text-muted"></i>
 
-                            <span class="item-name  text-muted">Permohonan</span>
+                            <span class="item-name  text-muted">Fail</span>
                         </a>
                         <ul class="mm-collapse">
                             <li class="item-name">
-                                <a href="alerts.html">
+                                <a href="{{ route('application.create') }}">
                                     <i class="nav-icon i-File"></i>
-                                    <span class="item-name">Baru</span>
+                                    <span class="item-name">Buka Fail</span>
                                 </a>
                             </li>
                             <li class="item-name">
                             <li class="nav-item">
-                                <a href="dropdown.html">
+                                <a href="{{ route('application.index') }}">
                                     <i class="nav-icon i-File"></i>
-                                    <span class="item-name">Pembaharuan</span>
+                                    <span class="item-name">Senarai Fail</span>
                                 </a>
                             </li>
                     </li>

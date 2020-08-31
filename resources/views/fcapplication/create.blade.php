@@ -2,6 +2,7 @@
 @section('before-css')
     <link rel="stylesheet" href="{{asset('assets/styles/vendor/pickadate/classic.css')}}">
     <link rel="stylesheet" href="{{asset('assets/styles/vendor/pickadate/classic.date.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/styles/vendor/select2/select2.min.css')}}">
 
 
 @endsection
@@ -56,16 +57,12 @@
                             </div>
                         </div>
 
-                        @foreach($premisedetails as $premisedetail)
                             <div class="form-group col-md-8">
                                 <label class="ul-form__label">Nama Premis:</label>
-                                <select required name="premis_detail_id" class="custom-select" >
-                                    <option selected disabled>--Pilih Premis--</option>
-                                    <option value="{{ $premisedetail->id }}">{{ $premisedetail->name }}</option>
+                                <select name="premis_detail_id" id="selUser" class="form-control">
+                                    <option value="">Pilih Premis</option>
                                 </select>
                             </div>
-
-                        @endforeach
 
                         <div class="form-group col-md-8">
                             <label class="ul-form__label">Status:</label>
@@ -81,33 +78,38 @@
                     </div>
                     <div class="custom-separator"></div>
                     <div class="card-title">Dokumen Sokongan</div>
-                    <div class="form-group col-md-8">
-                        <label class="ul-form__label">Borang 2:</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="file" name="documents[]">
-                            <label class="custom-file-label" aria-describedby="inputGroupFileAddon02" id="file-label">Choose
-                                file</label>
-                        </div>
-                        <small id="passwordHelpBlock" class="ul-form__text form-text ">
-                            Jenis Fail: .pfd
-                        </small>
-                    </div>
 
                     <div class="form-row col-md-12">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
+                            <label class="ul-form__label">Borang 2:</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="file" name="documents[]">
+                                <label class="custom-file-label" aria-describedby="inputGroupFileAddon02" id="file-label">Choose
+                                    file</label>
+                            </div>
+                            <small id="passwordHelpBlock" class="ul-form__text form-text ">
+                                Jenis Fail: .pdf
+                            </small>
+                        </div>
+                        <div class="form-group col-md-4">
                             <label for="inputEmail4" class="ul-form__label">Deskripsi:</label>
                             <input type="text" class="form-control" id="inputtext4" placeholder="Enter full name" name="description">
                             <small id="passwordHelpBlock" class="ul-form__text form-text ">
                                 Deskripsi ringkas fail yang dimuat naik.
                             </small>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label class="ul-form__label">Jenis Dokumen:</label>
                             <select required name="doctype" class="custom-select" >
                                 <option selected disabled>--Pilih Jenis Permohonan--</option>
                                 <option value="1">Borang FC1</option>
                             </select>
                         </div>
+                        <div class="form-group col-md-1">
+                            <label class="ul-form__label "> Tambah: </label>
+                            <button class="btn btn-outline-primary" type="button">+</button>
+                        </div>
+
                     </div>
 
                 </div>
@@ -134,6 +136,7 @@
     <script src="{{asset('assets/js/es5/dashboard.v1.script.js')}}"></script>
     <script src="{{asset('assets/js/vendor/pickadate/picker.js')}}"></script>
     <script src="{{asset('assets/js/vendor/pickadate/picker.date.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/select2/select2.min.js')}}"></script>
 
     <script>
         $(document).ready(function(){
@@ -146,6 +149,34 @@
                 $('#file-label').text(file);
             });
         });
+
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function(){
+
+            $( "#selUser" ).select2({
+                ajax: {
+                    url: "{{route('premise.getPremise')}}",
+                    type: "post",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            _token: CSRF_TOKEN,
+                            search: params.term // search term
+                        };
+                    },
+                    processResults: function (response) {
+                        return {
+                            results: response
+                        };
+                    },
+                    cache: true
+                }
+
+            });
+
+        });
+
     </script>
 
 
