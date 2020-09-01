@@ -46,7 +46,7 @@
     <div class="main-content-wrap  mobile-menu-content bg-off-white m-0 d-flex flex-column  flex-grow-1">
         @include('layouts.vertical-sidebar.header')
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="main-content pt-4">
                 @yield('main-content')
             </div>

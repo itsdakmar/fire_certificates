@@ -7,6 +7,7 @@ use App\PremiseDetail;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
 
 class FcApplicationController extends Controller
 {
@@ -63,8 +64,7 @@ class FcApplicationController extends Controller
           ]);
       }
 
-        return redirect()->route('application.index')->with('status', 'Pembukaan Fail Berjaya!');
-
+        return redirect()->route('application.index')->with('status', 'Pendafataran Premis Baharu Berjaya!');
 
     }
 
@@ -112,4 +112,21 @@ class FcApplicationController extends Controller
     {
         //
     }
+
+    public function data(Request $request)
+    {
+        if(!$request->ajax()){
+            return abort('404');
+        }
+
+        $data = PremiseDetail::latest()->get();
+        return DataTables::of($data)
+            ->addColumn('action', function($data){
+                $button = '<button type="button" id="'.$data->id.'" class="btn btn-primary ripple m-1">Primary</button>';
+                return $button;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
+
 }

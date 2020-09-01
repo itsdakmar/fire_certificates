@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PremiseRequest;
 use App\Imports\PremiseImport;
+use App\Office;
+use App\PremiseCategory;
 use App\PremiseDetail;
+use App\PremiseType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -14,6 +19,38 @@ class PremiseController extends Controller
     {
         return view('premise.index');
     }
+
+    public function create()
+    {
+        $premisedetails = PremiseDetail::all();
+        $premisecategories = PremiseCategory::all();
+        $premisetypes = PremiseType::all();
+        $offices = Office::all();
+        return view ('premise.create', compact('premisedetails', 'premisecategories', 'premisetypes', 'offices'));
+    }
+
+    public function store(PremiseRequest $request)
+    {
+            PremiseDetail::create([
+                'name' => $request->name,
+                'address' => $request->address,
+                'phone_number' => $request->phone_number,
+                'fax_number' => $request->fax_number,
+                'ert' => $request->ert,
+                'pic_name' => $request->pic_name,
+                'pic_phone' => $request->pic_phone,
+                'fc_name' => $request->fc_name,
+                'fc_phone' => $request->fc_phone,
+                'premise_type_id' => $request->premise_type_id,
+                'premise_category_id' => $request->premise_category_id,
+                'office_id' => $request->office_id
+
+            ]);
+
+
+        return redirect()->route('premise.index')->with('status', 'Pembukaan Fail Berjaya!');
+
+        }
 
     public function excel()
     {

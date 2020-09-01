@@ -16,7 +16,7 @@
                     <a class="dropdown-item" href="{{ route('premise.excel') }}">
                         <i class="i-Bell"> </i>
                         Muat-Naik Excel (.xlsx)</a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{ route('premise.create') }}">
                         <i class="i-Download-from-Cloud"> </i>
                         Daftar Baharu</a>
                 </div>
