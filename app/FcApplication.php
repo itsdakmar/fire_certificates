@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
- * @property integer $premis_detail_id
+ * @property integer $premise_detail_id
  * @property string $apply_date
  * @property string $type
  * @property string $expiry_date
@@ -24,7 +24,7 @@ class FcApplication extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -32,14 +32,14 @@ class FcApplication extends Model
     /**
      * @var array
      */
-    protected $fillable = ['premis_detail_id', 'apply_date', 'type', 'expiry_date', 'status', 'no_siri', 'created_at', 'updated_at'];
+    protected $fillable = ['premise_detail_id', 'apply_date', 'type', 'approved_date', 'expiry_date', 'status', 'no_siri', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function premiseDetail()
     {
-        return $this->belongsTo('App\PremiseDetail', 'premis_detail_id');
+        return $this->belongsTo('App\PremiseDetail');
     }
 
     /**

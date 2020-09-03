@@ -20,10 +20,13 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <table class="display table table-striped table-bordered" id="premise-table">
+                    <table class="display table table-striped table-bordered" id="application-table">
                         <thead>
                         <tr>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nama Premis</th>
+                            <th scope="col">Tarikh Permohonan</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Jenis</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -40,7 +43,7 @@
     <script src={{ asset('assets/js/vendor/datatables.min.js') }}></script>
     <script>
         $(document).ready(function () {
-            $('#premise-table').DataTable({
+            $('#application-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -48,8 +51,20 @@
                 },
                 columns: [
                     {
+                        data: 'premise_detail.name',
+                        name: 'Nama Premis',
+                    },
+                    {
                         data: 'apply_date',
-                        name: 'Apply Date',
+                        name: 'Tarikh Permohonan',
+                    },
+                    {
+                        data: 'status',
+                        name: 'status',
+                    },
+                    {
+                        data: 'type',
+                        name: 'Jenis',
                     },
                     {
                         data: 'action',

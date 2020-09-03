@@ -59,7 +59,7 @@
 
                             <div class="form-group col-md-8">
                                 <label class="ul-form__label">Nama Premis:</label>
-                                <select name="premis_detail_id" id="selUser" class="form-control">
+                                <select name="premise_detail_id" id="selPremise" class="form-control">
                                     <option value="">Pilih Premis</option>
                                 </select>
                             </div>
@@ -153,7 +153,7 @@
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
 
-            $( "#selUser" ).select2({
+            $( "#selPremise" ).select2({
                 ajax: {
                     url: "{{route('premise.getPremise')}}",
                     type: "post",

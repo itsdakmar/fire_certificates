@@ -20,10 +20,10 @@ class CreateFcApplicationsTable extends Migration
             $table->string('expiry_date');
             $table->string('status');
             $table->string('no_siri');
-            $table->unsignedBigInteger('premis_detail_id');
+            $table->unsignedBigInteger('premise_detail_id');
             $table->timestamps();
 
-            $table->foreign('premis_detail_id')->references('id')->on('premise_details');
+            $table->foreign('premise_detail_id')->references('id')->on('premise_details');
         });
     }
 

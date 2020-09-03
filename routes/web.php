@@ -19,11 +19,17 @@ Route::post('/premise/import', 'PremiseController@upload')->name('premise.upload
 Route::get('/premise/data', 'PremiseController@data')->name('premise.data');
 Route::get('/premise/create', 'PremiseController@create')->name('premise.create');
 Route::post('/premise/store', 'PremiseController@store')->name('premise.store');
+Route::post('/premise/getPremise/','PremiseController@getPremise')->name('premise.getPremise');
 
 
 Route::get('/application', 'FcApplicationController@index')->name('application.index');
 Route::get('/application/create', 'FcApplicationController@create')->name('application.create');
 Route::post('/application/store', 'FcApplicationController@store')->name('application.store');
 Route::get('/application/data', 'FcApplicationController@data')->name('application.data');
+Route::post('/application/approved/{applicationId}', 'FcApplicationController@approved')->name('application.approved');
+Route::get('/application/approving/{applicationId}', 'FcApplicationController@approving')->name('application.approving');
 
-Route::post('/premise/getPremise/','PremiseController@getPremise')->name('premise.getPremise');
+Route::get('/pdf', 'PdfController@test');
+
+
+

@@ -16,7 +16,6 @@ class CreateNoticesTable extends Migration
         Schema::create('notices', function (Blueprint $table) {
             $table->id();
             $table->string('notice_date');
-            $table->string('trigger_date');
             $table->string('total_payment');
             $table->unsignedBigInteger('fc_application_id');
             $table->timestamps();
