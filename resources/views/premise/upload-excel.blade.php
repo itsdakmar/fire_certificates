@@ -24,8 +24,8 @@
                         <div class="mc-footer">
                             <div class="row text-center">
                                 <div class="col-lg-12 ">
-                                    <button type="submit" class="btn btn-primary m-1">Save</button>
-                                    <button type="button" class="btn btn-outline-secondary m-1">Cancel</button>
+                                    <button type="submit" class="btn btn-primary m-1">Simpan</button>
+                                    <a  href="{{ route('premise.index') }}" type="button" class="btn btn-outline-secondary m-1">Batal</a>
                                 </div>
                             </div>
                         </div>

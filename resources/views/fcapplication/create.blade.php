@@ -32,23 +32,13 @@
                                     <span>Pembaharuan</span>
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="radio radio-secondary pr-2">
-                                    <input type="radio" name="type" value="3">
-                                    <span>Gantian</span>
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio radio-secondary pr-2">
-                                    <input type="radio" name="type" value="4">
-                                    <span>Pindaan</span>
-                                    <span class="checkmark"></span>
-                                </label>
                             </div>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label>Tarikh Mohon Perakuan</label>
                             <div class="input-group">
-                                <input id="picker3" class="form-control" placeholder="yyyy-mm-dd" name="apply_date" >
+                                <input id="picker3" class="form-control datepicker" data-date-format="dd/mm/yyyy" name="apply_date" >
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <i class="icon-regular i-Calendar-4"></i>
@@ -63,17 +53,6 @@
                                     <option value="">Pilih Premis</option>
                                 </select>
                             </div>
-
-                        <div class="form-group col-md-8">
-                            <label class="ul-form__label">Status:</label>
-                            <select required name="status" class="custom-select" id="type">
-                                <option selected disabled>--Pilih Jenis Permohonan--</option>
-                                <option value="1">Pending</option>
-                            </select>
-                            <small id="passwordHelpBlock" class="ul-form__text form-text ">
-                                Please enter your full name
-                            </small>
-                        </div>
 
                     </div>
                     <div class="custom-separator"></div>
@@ -117,8 +96,8 @@
                     <div class="mc-footer">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <button type="submit" class="btn  btn-primary m-1">Submit</button>
-                                <button type="button" class="btn btn-outline-secondary m-1">Cancel</button>
+                                <button type="submit" class="btn  btn-primary m-1">Hantar</button>
+                                <a href="{{ route('application.index') }}" type="button" class="btn btn-outline-secondary m-1">Batal</a>
                             </div>
                         </div>
                     </div>
@@ -140,7 +119,9 @@
 
     <script>
         $(document).ready(function(){
-            $('#picker2, #picker3').pickadate();
+            $('#picker2, #picker3').pickadate({
+                format: 'dd/mm/yyyy'
+            });
         });
 
         $(document).ready(function () {

@@ -42,7 +42,13 @@
                     <table class="display table table-striped table-bordered" id="premise-table">
                         <thead>
                         <tr>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nama Premis</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">No. Telefon</th>
+                            <th scope="col">No. Fax</th>
+                            <th scope="col">Jenis Premis</th>
+                            <th scope="col">Kategori Premis</th>
+                            <th scope="col">Balai</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -69,6 +75,30 @@
                     {
                         data: 'name',
                         name: 'name',
+                    },
+                    {
+                        data: 'address',
+                        name: 'address',
+                    },
+                    {
+                        data: 'phone_number',
+                        name: 'phone_number',
+                    },
+                    {
+                        data: 'fax_number',
+                        name: 'fax_number',
+                    },
+                    {
+                        data: 'premise_type_id',
+                        name: 'premise_type_id',
+                    },
+                    {
+                        data: 'premise_category_id',
+                        name: 'premise_category_id',
+                    },
+                    {
+                        data: 'office_id',
+                        name: 'office_id',
                     },
                     {
                         data: 'action',

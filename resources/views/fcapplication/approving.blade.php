@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="form-group col-md-8">
-                            <label>Tarikh Mohon Perakuan</label>
+                            <label>Tarikh Lulus Permohonan</label>
                             <div class="input-group">
                                 <input id="picker-approved" class="form-control" placeholder="Sila Pilih Tarikh lulus permohonan" name="approved_date" >
                                 <div class="input-group-prepend">
@@ -41,8 +41,8 @@
                     <div class="mc-footer">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <button type="submit"  onclick="return confirm('Adakah anda pasti?')" class="btn  btn-primary m-1">Submit</button>
-                                <button type="button" class="btn btn-outline-secondary m-1">Cancel</button>
+                                <button type="submit"  onclick="return confirm('Adakah anda pasti?')" class="btn  btn-primary m-1">Hantar</button>
+                                <button type="button" class="btn btn-outline-secondary m-1">Batal</button>
                             </div>
                         </div>
                     </div>

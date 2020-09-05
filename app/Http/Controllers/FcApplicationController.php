@@ -44,12 +44,11 @@ class FcApplicationController extends Controller
      */
     public function store(Request $request)
     {
-
         $fcapplications = FcApplication::create([
-            'apply_date' => $request->apply_date,
+            'apply_date' => Carbon::createFromFormat('d/m/Y', $request->apply_date)->toDateString(),
             'type' => $request->type,
             'expiry_date' => $request->expiry_date,
-            'status' => $request->status,
+            'status' => 1,
             'no_siri' => $request->no_siri,
             'premise_detail_id' => $request->premise_detail_id
         ]);
@@ -182,18 +181,21 @@ class FcApplicationController extends Controller
             ->addColumn('action', function ($datum) {
                 return '<a
                         href="#"
-                        class="text-success mr-2">
+                        class="text-success mr-2"
+                        data-toggle="tooltip" data-placement="top" title="#">
                         <i class="nav-icon i-Pen-2 font-weight-bold"></i></a>
                         <a
-                        href="#"
-                        class="text-success mr-2">
+                        href="' . route('inspection.create', $datum->id) . '"
+                        class="text-success mr-2"
+                        data-toggle="tooltip" data-placement="top" title="Pemeriksaan">
                         <i class="nav-icon i-Check font-weight-bold"></i></a>
                         <a
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Lulus permohonan"
                         href="' . route('application.approving', $datum->id) . '"
-                        class="text-success mr-2">
+                        class="text-success mr-2"
+                      >
                         <i class="nav-icon i-Checked-User font-weight-bold"></i></a>';
 
             })

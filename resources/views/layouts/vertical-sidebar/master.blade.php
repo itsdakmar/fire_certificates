@@ -80,7 +80,11 @@
 
 
 <script src="{{asset('assets/js/customizer.script.js')}}"></script>
-
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 {{-- laravel js --}}
 {{-- <script src="{{mix('assets/js/laravel/app.js')}}"></script> --}}
 

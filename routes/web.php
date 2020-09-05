@@ -29,6 +29,9 @@ Route::get('/application/data', 'FcApplicationController@data')->name('applicati
 Route::post('/application/approved/{applicationId}', 'FcApplicationController@approved')->name('application.approved');
 Route::get('/application/approving/{applicationId}', 'FcApplicationController@approving')->name('application.approving');
 
+Route::get('/inspection/create/{applicationId}', 'InspectionController@create')->name('inspection.create');
+
+
 Route::get('/pdf', 'PdfController@test');
 
 

@@ -111,7 +111,7 @@ $(document).ready(function () {
                 type: 'pie',
                 radius: '60%',
                 center: ['50%', '50%'],
-                data: [{ value: 535, name: 'USA' }, { value: 310, name: 'Brazil' }, { value: 234, name: 'France' }, { value: 155, name: 'BD' }, { value: 130, name: 'UK' }, { value: 348, name: 'India' }],
+                data: [{ value: 535, name: 'Perpustakaan' }, { value: 310, name: 'Hospital & Rumah Rawatan' }, { value: 234, name: 'Hotel' }, { value: 155, name: 'Asrama & Dormitori' }, { value: 130, name: 'Pejabat' }, { value: 348, name: 'Kedai' }],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,

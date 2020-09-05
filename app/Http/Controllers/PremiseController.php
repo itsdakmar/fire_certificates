@@ -60,7 +60,7 @@ class PremiseController extends Controller
     public function upload(Request $request)
     {
         Excel::import(new PremiseImport, $request->file('premise'));
-        return route('premise.index')->withStatus('Successfully import premise');
+        return route('premise.index')->with('status','Successfully import premise');
     }
 
     public function data(Request $request)
@@ -69,11 +69,27 @@ class PremiseController extends Controller
             return abort('404');
         }
 
-        $data = PremiseDetail::latest()->get();
+        $data = PremiseDetail::with('premiseCategory','premiseType')->latest()->get();
         return DataTables::of($data)
-            ->addColumn('action', function($data){
-                $button = '<button type="button" id="'.$data->id.'" class="btn btn-primary ripple m-1">Primary</button>';
-                return $button;
+            ->addColumn('action', function($datum){
+                return '<a
+                        href="#"
+                        class="text-success mr-2"
+                        data-toggle="tooltip" data-placement="top" title="#">
+                        <i class="nav-icon i-Pen-2 font-weight-bold"></i></a>
+                        <a
+                        href="' . route('inspection.create', $datum->id) . '"
+                        class="text-success mr-2"
+                        data-toggle="tooltip" data-placement="top" title="Pemeriksaan">
+                        <i class="nav-icon i-Check font-weight-bold"></i></a>
+                        <a
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Lulus permohonan"
+                        href="' . route('application.approving', $datum->id) . '"
+                        class="text-success mr-2"
+                      >
+                        <i class="nav-icon i-Checked-User font-weight-bold"></i></a>';
             })
             ->rawColumns(['action'])
             ->make(true);
