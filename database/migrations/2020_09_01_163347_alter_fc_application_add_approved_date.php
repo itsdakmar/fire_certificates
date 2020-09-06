@@ -13,7 +13,7 @@ class AlterFcApplicationAddApprovedDate extends Migration
      */
     public function up()
     {
-        Schema::table('Fc_applications', function (Blueprint $table) {
+        Schema::table('fc_applications', function (Blueprint $table) {
             $table->string('approved_date')->nullable()->after('type');
         });
     }
