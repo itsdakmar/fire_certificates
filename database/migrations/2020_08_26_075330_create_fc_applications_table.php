@@ -15,7 +15,7 @@ class CreateFcApplicationsTable extends Migration
     {
         Schema::create('fc_applications', function (Blueprint $table) {
             $table->id();
-            $table->string('apply_date');
+            $table->string('apply_date')->nullable();
             $table->string('type');
             $table->string('expiry_date');
             $table->string('status');
@@ -23,7 +23,7 @@ class CreateFcApplicationsTable extends Migration
             $table->unsignedBigInteger('premise_detail_id');
             $table->timestamps();
 
-            $table->foreign('premise_detail_id')->references('id')->on('premise_details');
+            $table->foreign('premise_detail_id')->references('id')->on('premise_details')->cascadeOnDelete();
         });
     }
 

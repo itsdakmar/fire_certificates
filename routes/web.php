@@ -33,6 +33,7 @@ Route::get('/inspection/create/{applicationId}', 'InspectionController@create')-
 
 
 Route::get('/pdf', 'PdfController@test');
+Route::get('/notify/send', 'PremiseController@notify')->name('email.notify');
 
 
 

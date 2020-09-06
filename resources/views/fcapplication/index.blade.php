@@ -4,9 +4,15 @@
 @endsection
 @section('main-content')
 
+    <div class="row justify-content-end">
+        <div class="col px-0 mb-4">
+            <a href="{{ route('email.notify') }}" class="btn btn-primary">Hantar Notifikasi (E-mel)</a>
+        </div>
+    </div>
+
     @if (session('status'))
         <div class="row">
-            <div class="col">
+            <div class="col px-0">
                 <div class="alert alert-card alert-success" role="alert">
                     <strong class="text-capitalize">Success!</strong> {{ session('status') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -16,17 +22,18 @@
             </div>
         </div>
     @endif
+
     <div class="row">
-        <div class="col">
+        <div class="col px-0">
             <div class="card">
                 <div class="card-body">
                     <table class="display table table-striped table-bordered" id="application-table">
                         <thead>
                         <tr>
                             <th scope="col">Nama Premis</th>
-                            <th scope="col">Tarikh Permohonan</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Jenis</th>
+                            <th scope="col">Kategori</th>
+                            <th scope="col">Tarikh Tamat FC</th>
+                            <th scope="col">&nbsp;</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -46,32 +53,42 @@
             $('#application-table').DataTable({
                 processing: true,
                 serverSide: true,
+                order: [[ 3, "asc" ]],
                 ajax: {
                     url: '{{ route('application.data') }}'
                 },
                 columns: [
                     {
                         data: 'premise_detail.name',
-                        name: 'Nama Premis',
+                        name: 'premise_detail.name',
                     },
                     {
-                        data: 'apply_date',
-                        name: 'Tarikh Permohonan',
+                        data: 'premise_detail.premise_category.name',
+                        name: 'premise_detail.premise_category.name',
                     },
                     {
-                        data: 'status',
-                        name: 'status',
+                        data: 'expiry_date',
+                        name: 'expiry_date',
                     },
                     {
-                        data: 'type',
-                        name: 'Jenis',
+                        data: 'countdown',
+                        name: 'countdown',
                     },
                     {
                         data: 'action',
                         name: 'action',
                         orderable: false
                     }
-                ]
+                ],
+                createdRow: function ( row, data, index ) {
+                    if ( parseInt(data['countdown']) == 0 ) {
+                        $(row).css({'background' : '#f8d7da'});
+                    }
+                    else if ( parseInt(data['countdown']) <= 5 ) {
+                        $(row).css({'background' : '#fff3cd'});
+                    }
+
+                }
             });
         });
     </script>

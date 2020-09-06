@@ -9,12 +9,18 @@ use App\PremiseCategory;
 use App\PremiseDetail;
 use App\PremiseType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
 class PremiseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('premise.index');
@@ -59,8 +65,9 @@ class PremiseController extends Controller
 
     public function upload(Request $request)
     {
-        Excel::import(new PremiseImport, $request->file('premise'));
-        return route('premise.index')->with('status','Successfully import premise');
+        $imports = (new PremiseImport)->import($request->file('premise'));
+        return redirect()->route('premise.index')->with('status', 'Muat Naik Maklumat Premis Berjaya!');
+
     }
 
     public function data(Request $request)
@@ -69,27 +76,12 @@ class PremiseController extends Controller
             return abort('404');
         }
 
-        $data = PremiseDetail::with('premiseCategory','premiseType')->latest()->get();
+        $data = PremiseDetail::with('office','premiseCategory','premiseType')->latest()->get();
         return DataTables::of($data)
-            ->addColumn('action', function($datum){
-                return '<a
-                        href="#"
-                        class="text-success mr-2"
-                        data-toggle="tooltip" data-placement="top" title="#">
-                        <i class="nav-icon i-Pen-2 font-weight-bold"></i></a>
-                        <a
-                        href="' . route('inspection.create', $datum->id) . '"
-                        class="text-success mr-2"
-                        data-toggle="tooltip" data-placement="top" title="Pemeriksaan">
-                        <i class="nav-icon i-Check font-weight-bold"></i></a>
-                        <a
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Lulus permohonan"
-                        href="' . route('application.approving', $datum->id) . '"
-                        class="text-success mr-2"
-                      >
-                        <i class="nav-icon i-Checked-User font-weight-bold"></i></a>';
+            ->addColumn('action', function($data){
+                return '';
+//                $button = '<button type="button" id="'.$data->id.'" class="btn btn-primary ripple m-1">Primary</button>';
+//                return $button;
             })
             ->rawColumns(['action'])
             ->make(true);
@@ -114,6 +106,12 @@ class PremiseController extends Controller
 
         echo json_encode($response);
         exit;
+    }
+
+    public function notify(){
+        Artisan::call('email:notify');
+
+        return back()->with('status','Emel Berjaya di hantar!');
     }
 
 

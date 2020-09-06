@@ -21,7 +21,7 @@ class CreateDocumentsTable extends Migration
             $table->unsignedBigInteger('fc_application_id');
             $table->timestamps();
 
-            $table->foreign('fc_application_id')->references('id')->on('fc_applications');
+            $table->foreign('fc_application_id')->references('id')->on('fc_applications')->cascadeOnDelete();
         });
     }
 

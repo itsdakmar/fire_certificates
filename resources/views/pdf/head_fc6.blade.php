@@ -2,8 +2,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Borang Perakuan FC 6</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 <style>
     * {
@@ -32,14 +32,14 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2">
-            <img src="{{ asset('images/jata.svg') }}" width="auto" height="120px">
+        <div class="col-xs-2">
+            <img src="{{ asset('images/jata.svg') }}" width="auto" height="100px">
         </div>
-        <div class="col-5 px-4">
+        <div class="col-xs-5 px-4">
             <b>IBU PEJABAT <br> JABATAN BOMBA DAN PENYELAMAT MALAYSIA <br> NEGERI MELAKA</b>
             <p>Peti Surat 372, Jalan Tun Hamzah, Hang Tuah Jaya <br> 75450 Bukit Katil <br> MELAKA </p>
         </div>
-        <div class="col-3 pt-4">
+        <div class="col-xs-3 pt-4" style="padding-top: 3.4em">
             <table>
                 <tr>
                     <td>Telefon: 606-2513100</td>
@@ -55,15 +55,15 @@
                 </tr>
             </table>
         </div>
-        <div class="col-2">
-            <img src="{{ asset('assets/images/logo.svg') }}" width="auto" height="140px">
+        <div class="col-xs-2">
+            <img src="{{ asset('assets/images/logo.svg') }}" width="auto" height="130px">
         </div>
     </div>
     <hr style="border-top: 1px solid">
     <section class="container">
 
-        <div class="row justify-content-end">
-            <div class="col-6">
+        <div class="row ">
+            <div class="col-offset-xs-6 col-xs-6">
                 <table>
                     <tr>
                         <td>Ruj.Kami</td>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-4">
+            <div class="col-xs-4">
                 <table>
                     <tr>
                         <td>Pengurus</td>
@@ -100,7 +100,7 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-1">
+            <div class="col-xs-1">
                 <p>Tuan,</p>
             </div>
         </div>
@@ -186,7 +186,7 @@
     <section class="footer">
         <hr style="border-top: 1px solid">
         <div class="row justify-content-center">
-            <div class="col-4">
+            <div class="col-xs-4">
                 <table>
                     <tr>
                         <td colspan="2">
