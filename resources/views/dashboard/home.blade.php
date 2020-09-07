@@ -11,49 +11,25 @@
 
 <div class="row">
     <!-- ICON BG -->
-    <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="col-lg-6 col-md-12 col-sm-12">
         <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
             <div class="card-body text-center">
-                <i class="i-Add-User"></i>
+                <i class="i-Building"></i>
                 <div class="content">
-                    <p class="text-muted mt-2 mb-0 text-left">Permohonan Baharu</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">205</p>
+                    <p class="mt-2 mb-0 text-left text-wrap" style="width: 100px">Jumlah Premis</p>
+                    <p class="text-primary text-24 text-left line-height-1 mb-2">{{ $countPremises }}</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="col-lg-6 col-md-12 col-sm-12">
         <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
             <div class="card-body text-center">
-                <i class="i-Financial"></i>
+                <i class="i-File-Clipboard"></i>
                 <div class="content">
-                    <p class="text-muted mt-2 mb-0 text-left">Permohonan Pembaharuan</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">21</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-            <div class="card-body text-center">
-                <i class="i-Checkout-Basket"></i>
-                <div class="content">
-                    <p class="text-muted mt-2 mb-0 text-left">Sijil Dikeluarkan</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">80</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-            <div class="card-body text-center">
-                <i class="i-Money-2"></i>
-                <div class="content">
-                    <p class="text-muted mt-2 mb-0 text-left">Bayaran Dipungut</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">$1200</p>
+                    <p class="text-muted mt-2 mb-0 text-left" style="width: 100px">Jumlah Fail</p>
+                    <p class="text-primary text-24 text-left line-height-1 mb-2">{{ $countApplications }}</p>
                 </div>
             </div>
         </div>
@@ -62,22 +38,15 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-8 col-md-12">
+    <div class="col-lg-12 col-md-12">
         <div class="card mb-4">
             <div class="card-body">
-                <div class="card-title">Perangkaan Status Perakuan Bomba Bagi Bangunan Kerajaan & Swasta</div>
-                <div id="echartBar" style="height: 300px;"></div>
+                <div class="card-title">Jumlah Premis Dengan Sijil Perakuan Bakal Tamat Tempoh (Bulanan)</div>
+                <canvas class="my-4" id="myChart" height="100px"></canvas>
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-sm-12">
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="card-title">Jumlah Premis Mengikut Kategori</div>
-                <div id="echartPie" style="height: 300px;"></div>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 <div class="row">
@@ -86,16 +55,6 @@
 
     </div>
 
-
-
-    <div class="col-md-12">
-        <div class="card mb-4">
-            <div class="card-body p-0">
-                <h5 class="card-title m-0 p-3">Last 20 Day Leads</h5>
-                <div id="echart3" style="height: 360px;"></div>
-            </div>
-        </div>
-    </div>
 
 </div>
 
@@ -106,5 +65,70 @@
 <script src="{{asset('assets/js/vendor/echarts.min.js')}}"></script>
 <script src="{{asset('assets/js/es5/echart.options.min.js')}}"></script>
 <script src="{{asset('assets/js/es5/dashboard.v1.script.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+
+<script>
+    function getData(url){
+        return $.getJSON(url, function(data){
+            return data;
+        });
+    }
+
+    getData("http://localhost/fire_certificates/public/application/yearly").then(function(data) {
+
+        var config = {
+            type: 'line',
+            data: {
+                labels: ['Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember'],
+                datasets: [{
+                    label: 'Bilangan Premis',
+                    backgroundColor: window.chartColors.purple,
+                    borderColor: window.chartColors.purple,
+                    data: data,
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: ' '
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Bulan'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Jumlah'
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }]
+                }
+            }
+        };
+
+        var ctx = document.getElementById("myChart").getContext('2d');
+        window.myLine = new Chart(ctx, config);
+    });
+    </script>
 
 @endsection

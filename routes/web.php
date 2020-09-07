@@ -31,6 +31,9 @@ Route::get('/application/approving/{applicationId}', 'FcApplicationController@ap
 
 Route::get('/inspection/create/{applicationId}', 'InspectionController@create')->name('inspection.create');
 
+Route::get('/application/yearly', 'HomeController@applicationYearly')->name('application.yearly');
+Route::get('/premise/category', 'HomeController@premiseCategory')->name('premise.category');
+
 
 Route::get('/pdf', 'PdfController@test');
 
