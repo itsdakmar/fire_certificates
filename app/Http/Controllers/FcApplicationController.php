@@ -14,6 +14,11 @@ use Yajra\DataTables\Facades\DataTables;
 
 class FcApplicationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -171,32 +176,50 @@ class FcApplicationController extends Controller
 
     public function data(Request $request)
     {
-        if (!$request->ajax()) {
-            return abort('404');
-        }
+//        if (!$request->ajax()) {
+//            return abort('404');
+//        }
 
-        $data = FcApplication::with('premiseDetail')->latest()->get();
+        $data = FcApplication::with('premiseDetail','premiseDetail.premiseCategory')
+            ->orderBy('expiry_date', 'ASC')
+            ->get();
+
 
         return DataTables::of($data)
+            ->editColumn('expiry_date', function ($datum)
+            {
+                return date('d F Y', strtotime($datum->expiry_date));
+            })
+            ->addColumn('countdown', function ($datum) {
+                $now = Carbon::now()->timezone('Asia/Kuala_Lumpur');
+                $expired_date = Carbon::parse($datum->expiry_date);
+
+                if($now > $expired_date){
+                    return '0 - Telah Tamat Tempoh';
+                }else {
+                    return ($now->diffInDays($expired_date) + 1).' Hari Lagi';
+                }
+            })
             ->addColumn('action', function ($datum) {
-                return '<a
-                        href="#"
-                        class="text-success mr-2"
-                        data-toggle="tooltip" data-placement="top" title="#">
-                        <i class="nav-icon i-Pen-2 font-weight-bold"></i></a>
-                        <a
-                        href="' . route('inspection.create', $datum->id) . '"
-                        class="text-success mr-2"
-                        data-toggle="tooltip" data-placement="top" title="Pemeriksaan">
-                        <i class="nav-icon i-Check font-weight-bold"></i></a>
-                        <a
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Lulus permohonan"
-                        href="' . route('application.approving', $datum->id) . '"
-                        class="text-success mr-2"
-                      >
-                        <i class="nav-icon i-Checked-User font-weight-bold"></i></a>';
+                return '';
+//                return '<a
+//                        href="#"
+//                        class="text-success mr-2"
+//                        data-toggle="tooltip" data-placement="top" title="#">
+//                        <i class="nav-icon i-Pen-2 font-weight-bold"></i></a>
+//                        <a
+//                        href="' . route('inspection.create', $datum->id) . '"
+//                        class="text-success mr-2"
+//                        data-toggle="tooltip" data-placement="top" title="Pemeriksaan">
+//                        <i class="nav-icon i-Check font-weight-bold"></i></a>
+//                        <a
+//                        data-toggle="tooltip"
+//                        data-placement="top"
+//                        title="Lulus permohonan"
+//                        href="' . route('application.approving', $datum->id) . '"
+//                        class="text-success mr-2"
+//                      >
+//                        <i class="nav-icon i-Checked-User font-weight-bold"></i></a>';
 
             })
             ->rawColumns(['action'])

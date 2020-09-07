@@ -21,7 +21,7 @@ class CreateInspectionPostponesTable extends Migration
             $table->unsignedBigInteger('inspection_id');
             $table->timestamps();
 
-            $table->foreign('inspection_id')->references('id')->on('inspections');
+            $table->foreign('inspection_id')->references('id')->on('inspections')->cascadeOnDelete();
         });
     }
 

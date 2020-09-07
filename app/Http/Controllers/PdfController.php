@@ -9,9 +9,9 @@ use PDF;
 class PdfController extends Controller
 {
     public function test(){
-//        $pdf = PDF::loadView('pdf.head_fc6');
-//        return $pdf->stream();
+        $pdf = PDF::loadView('pdf.head_fc6');
+        return $pdf->stream();
 
-        return view('pdf.head_fc6');
+//        return view('pdf.head_fc6');
     }
 }

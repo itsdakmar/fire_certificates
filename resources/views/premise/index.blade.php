@@ -89,16 +89,16 @@
                         name: 'fax_number',
                     },
                     {
-                        data: 'premise_type_id',
-                        name: 'premise_type_id',
+                        data: 'premise_type.name',
+                        name: 'premise_type.name',
                     },
                     {
-                        data: 'premise_category_id',
-                        name: 'premise_category_id',
+                        data: 'premise_category.name',
+                        name: 'premise_category.name',
                     },
                     {
-                        data: 'office_id',
-                        name: 'office_id',
+                        data: 'office.name',
+                        name: 'office.name',
                     },
                     {
                         data: 'action',

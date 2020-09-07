@@ -36,6 +36,7 @@ Route::get('/premise/category', 'HomeController@premiseCategory')->name('premise
 
 
 Route::get('/pdf', 'PdfController@test');
+Route::get('/notify/send', 'PremiseController@notify')->name('email.notify');
 
 
 

@@ -32,9 +32,9 @@ class CreatePremiseDetailsTable extends Migration
             $table->unsignedBigInteger('office_id');
             $table->timestamps();
 
-            $table->foreign('premise_type_id')->references('id')->on('premise_types');
-            $table->foreign('premise_category_id')->references('id')->on('premise_categories');
-            $table->foreign('office_id')->references('id')->on('offices');
+            $table->foreign('premise_type_id')->references('id')->on('premise_types')->cascadeOnDelete();
+            $table->foreign('premise_category_id')->references('id')->on('premise_categories')->cascadeOnDelete();
+            $table->foreign('office_id')->references('id')->on('offices')->cascadeOnDelete();
 //            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
