@@ -75,7 +75,7 @@
         });
     }
 
-    getData("http://localhost/fire_certificates/public/application/yearly").then(function(data) {
+    getData("{{ route('application.yearly') }}").then(function(data) {
 
         var config = {
             type: 'line',
