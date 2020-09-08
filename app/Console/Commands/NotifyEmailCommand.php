@@ -44,7 +44,13 @@ class NotifyEmailCommand extends Command
         $notices = Notice::whereDate('notice_date', Carbon::today())->with('fcApplication','fcApplication.premiseDetail')->get();
         if($notices->count() > 0){
             foreach ($notices as $notice){
-                Mail::to(['syafikatyra@gmail.com','imdakmar@gmail.com','norshuhadaamsari@yahoo.com'])->send(new NotificationMail($notice));
+                Mail::to([
+                    'syafikatyra@gmail.com',
+                    'imdakmar@gmail.com',
+                    'norshuhadaamsari@yahoo.com',
+                    'b031810044@student.utem.edu.my',
+                    'b031710277@student.utem.edu.my'
+                ])->send(new NotificationMail($notice));
             }
         }
     }
