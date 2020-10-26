@@ -29,4 +29,9 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    function showLinkRequestForm()
+    {
+        return view('auth.reset');
+    }
 }

@@ -8,19 +8,23 @@
     <title>Sistem Pengurusan Perakuan BOMBA</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/styles/css/themes/lite-purple.min.css')}}">
+    <style>
+        .bg-custom {
+            background: #8e9eab; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #ced4da, #eef2f3); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #ced4da, #eef2f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
 </head>
 
 <body>
-<div class="auth-layout-wrap" style="background: whitesmoke">
+<div class="auth-layout-wrap bg-custom">
     <div class="auth-content">
         <div class="card o-hidden">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-12 order-md-1 order-2">
                     <div class="p-4">
-                        <div class="auth-logo text-center mb-4">
-                            <img src="{{asset('assets/images/logo.svg')}}" alt="">
-                        </div>
-                        <h1 class="mb-3 text-18">Log Masuk</h1>
+                        <h1 class="mb-3 text-18 text-md-left text-center">Log Masuk</h1>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group">
@@ -71,22 +75,9 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6 text-center "
-                     style="background-size: cover;background-image: url({{asset('assets/images/photo-long-3.jpg')}}">
-                    <div class="pr-3 auth-right">
-                        <a class="btn btn-rounded btn-outline-primary btn-outline-email btn-block btn-icon-text"
-                           href="signup.html">
-                            <i class="i-Mail-with-At-Sign"></i> Sign up with Email
-                        </a>
-                        <a
-                            class="btn btn-rounded btn-outline-primary btn-outline-google btn-block btn-icon-text">
-                            <i class="i-Google-Plus"></i> Sign up with Google
-                        </a>
-                        <a
-                            class="btn btn-rounded btn-outline-primary btn-block btn-icon-text btn-outline-facebook">
-                            <i class="i-Facebook-2"></i> Sign up with Facebook
-                        </a>
-                    </div>
+                <div class="col-md-6 col-12 order-md-2 order-1 text-center "
+                     style="padding: 2rem;">
+                    <img src="{{asset('assets/images/logo.svg')}}" width="175px" alt="">
                 </div>
             </div>
         </div>

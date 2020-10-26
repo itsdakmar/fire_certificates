@@ -39,13 +39,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <table class="display table table-striped table-bordered" id="premise-table">
+                    <table class="display table table-striped table-bordered premise-table" id="premise-table">
                         <thead>
                         <tr>
                             <th scope="col">Nama Premis</th>
-                            <th scope="col">Alamat</th>
                             <th scope="col">No. Telefon</th>
-                            <th scope="col">No. Fax</th>
                             <th scope="col">Jenis Premis</th>
                             <th scope="col">Kategori Premis</th>
                             <th scope="col">Balai</th>
@@ -65,7 +63,7 @@
     <script src={{ asset('assets/js/vendor/datatables.min.js') }}></script>
     <script>
         $(document).ready(function () {
-            $('#premise-table').DataTable({
+            let table = $('#premise-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -77,16 +75,8 @@
                         name: 'name',
                     },
                     {
-                        data: 'address',
-                        name: 'address',
-                    },
-                    {
                         data: 'phone_number',
                         name: 'phone_number',
-                    },
-                    {
-                        data: 'fax_number',
-                        name: 'fax_number',
                     },
                     {
                         data: 'premise_type.name',
@@ -106,6 +96,10 @@
                         orderable: false
                     }
                 ]
+            });
+
+            $('#premise-table').on( 'click', 'tr', function () {
+
             });
         });
     </script>
