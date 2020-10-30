@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FcApplication;
+use App\Http\Requests\ApplicationStoreRequest;
 use App\Http\Requests\ApprovingApplicationRequest;
 use App\Notice;
 use App\PremiseDetail;
@@ -10,6 +11,7 @@ use App\PremiseDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 class FcApplicationController extends Controller
@@ -47,8 +49,9 @@ class FcApplicationController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplicationStoreRequest $request)
     {
+
         $fcapplications = FcApplication::create([
             'apply_date' => Carbon::createFromFormat('d/m/Y', $request->apply_date)->toDateString(),
             'type' => $request->type,
@@ -69,9 +72,11 @@ class FcApplicationController extends Controller
             ]);
         }
 
+
         return redirect()->route('application.index')->with('status', 'Pendafataran Premis Baharu Berjaya!');
 
-    }
+        }
+
 
     /**
      * Display the specified resource.

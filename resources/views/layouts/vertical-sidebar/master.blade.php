@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js">
 
 
+
     {{-- page specific css --}}
     @yield('page-css')
 </head>
