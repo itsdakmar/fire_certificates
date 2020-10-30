@@ -33,7 +33,7 @@
                             <th scope="col">Nama Premis</th>
                             <th scope="col">Kategori</th>
                             <th scope="col">Tarikh Tamat FC</th>
-                            <th scope="col">&nbsp;</th>
+                            <th scope="col">Bil. Hari Sebelum Tarikh Tamat</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -80,6 +80,21 @@
                         orderable: false
                     }
                 ],
+
+                dom: 'Bfrtip',
+                columnDefs: [
+                    {
+                        targets: 1,
+                        className: 'noVis'
+                    }
+                ],
+                buttons: [
+                    {
+                        extend: 'colvis',
+                        columns: ':not(.noVis)'
+                    }
+                ],
+
                 createdRow: function ( row, data, index ) {
                     if ( parseInt(data['countdown']) == 0 ) {
                         $(row).css({'background' : '#f8d7da'});
@@ -90,6 +105,10 @@
 
                 }
             });
+
+
+
+
         });
     </script>
 @endsection

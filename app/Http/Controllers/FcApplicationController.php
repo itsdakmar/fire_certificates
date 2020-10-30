@@ -201,25 +201,25 @@ class FcApplicationController extends Controller
                 }
             })
             ->addColumn('action', function ($datum) {
-                return '';
-//                return '<a
-//                        href="#"
-//                        class="text-success mr-2"
-//                        data-toggle="tooltip" data-placement="top" title="#">
-//                        <i class="nav-icon i-Pen-2 font-weight-bold"></i></a>
-//                        <a
-//                        href="' . route('inspection.create', $datum->id) . '"
-//                        class="text-success mr-2"
-//                        data-toggle="tooltip" data-placement="top" title="Pemeriksaan">
-//                        <i class="nav-icon i-Check font-weight-bold"></i></a>
-//                        <a
-//                        data-toggle="tooltip"
-//                        data-placement="top"
-//                        title="Lulus permohonan"
-//                        href="' . route('application.approving', $datum->id) . '"
-//                        class="text-success mr-2"
-//                      >
-//                        <i class="nav-icon i-Checked-User font-weight-bold"></i></a>';
+               /* return '';*/
+                return '<a
+                       href="#"
+                       class="text-success mr-2"
+                       data-toggle="tooltip" data-placement="top" title="#">
+                       <i class="nav-icon i-Pen-2 font-weight-bold"></i></a>
+                      <a
+                       href="' . route('inspection.create', $datum->id) . '"
+                       class="text-success mr-2"
+                      data-toggle="tooltip" data-placement="top" title="Pemeriksaan">
+                      <i class="nav-icon i-Check font-weight-bold"></i></a>
+                       <a
+                       data-toggle="tooltip"
+                       data-placement="top"
+                       title="Lulus permohonan"
+                      href="' . route('application.approving', $datum->id) . '"
+                       class="text-success mr-2"
+                     >
+                        <i class="nav-icon i-Checked-User font-weight-bold"></i></a>';
 
             })
             ->rawColumns(['action'])

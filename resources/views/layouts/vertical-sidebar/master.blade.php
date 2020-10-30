@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Gull - Laravel 7 + Bootstrap 4 admin template</title>
+    <title>Sistem Pengurusan Perakuan BOMBA</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
     @yield('before-css')
     {{-- theme css --}}
@@ -18,6 +18,8 @@
 
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-free-5.10.1-web/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/vendor/metisMenu.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/js/buttons.colVis.min.js">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js">
 
 
     {{-- page specific css --}}
@@ -44,7 +46,11 @@
 <div class="app-admin-wrap layout-sidebar-vertical sidebar-full">
     @include('layouts.vertical-sidebar.sidebar')
     <div class="main-content-wrap  mobile-menu-content bg-off-white m-0 d-flex flex-column  flex-grow-1">
-        @include('layouts.vertical-sidebar.header')
+        {{--@include('layouts.vertical-sidebar.header')--}}
+
+        <div class="text-lg-right">
+        <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen=""></i>
+    </div>
 
         <div class="container-fluid">
             <div class="main-content pt-4">

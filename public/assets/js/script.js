@@ -208,7 +208,7 @@ $(window).on("load", function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/dakmar/Workspace/fire_certificates/resources/gull/assets/js/script.js */"./resources/gull/assets/js/script.js");
+module.exports = __webpack_require__(/*! c:\laragon\www\fire_certificates\resources\gull\assets\js\script.js */"./resources/gull/assets/js/script.js");
 
 
 /***/ })

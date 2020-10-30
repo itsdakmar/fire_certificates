@@ -2,6 +2,7 @@
 <div class="sidebar-panel">
     <div class="gull-brand px-3 text-center my-4 d-flex justify-content-center align-items-center">
         <img class="ml-auto" src="{{ asset('assets/images/logo.svg') }}" alt="">
+
         <!-- <span class=" item-name text-20 text-primary font-weight-700">GULL</span> -->
         <div class="sidebar-compact-switch ml-auto"><span></span></div>
 
@@ -59,7 +60,45 @@
                     </li>
 
                 </ul>
+
+                    <li class="Ul_li--hover">
+                        <a class="" href="{{ route('report.index') }}">
+                        <i class="i-Bar-Chart mr-2 text-muted"></i>
+                        <span class="item-name  text-muted">Laporan</span>
+                        </a>
+                        </li>
                 </li>
+                    <li class="Ul_li--hover">
+                        <a class="has-arrow">
+                            <i class="i-Administrator text-20 mr-2 text-muted"></i>
+                            <span class="item-name  text-muted">Profil</span>
+                        </a>
+                        <ul class="mm-collapse">
+                            <li class="item-name">
+                                <a href="#">
+                                    <span class="item-name text-primary font-italic ">{{ Auth::user()->name }}</span>
+                                </a>
+                            </li>
+                            <li class="item-name">
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <i class="nav-icon i-Checked-User"></i>
+                                    <span class="item-name">Daftar Keluar</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                            <li class="item-name">
+                                <a href="#">
+                                    <i class="nav-icon i-Add-User"></i>
+                                    <span class="item-name">Kemaskini Profil</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
 {{--                <li class="Ul_li--hover">--}}
 {{--                    <a class="has-arrow" href="#">--}}
 {{--                        <i class="i-Suitcase text-20 mr-2 text-muted"></i>--}}
