@@ -47,14 +47,19 @@
                             <li class="item-name">
                                 <a href="{{ route('application.create') }}">
                                     <i class="nav-icon i-File"></i>
-                                    <span class="item-name">Buka Fail</span>
+                                    <span class="item-name">Buka Fail Baharu</span>
                                 </a>
                             </li>
                             <li class="item-name">
-                            <li class="nav-item">
                                 <a href="{{ route('application.index') }}">
                                     <i class="nav-icon i-File"></i>
-                                    <span class="item-name">Senarai Fail</span>
+                                    <span class="item-name">Senarai Fail Belum Lulus</span>
+                                </a>
+                            </li>
+                            <li class="item-name">
+                                <a href="{{ route('approved.list') }}">
+                                    <i class="nav-icon i-File"></i>
+                                    <span class="item-name">Senarai Fail Lulus</span>
                                 </a>
                             </li>
                     </li>

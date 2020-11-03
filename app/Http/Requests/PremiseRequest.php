@@ -54,7 +54,7 @@ class PremiseRequest extends FormRequest
             'fax_number.required' => 'Ruangan ini perlu di isi dengan nombor sahaja. cth:06XXXXXXX',
             'ert.required' => 'Ruangan ini perlu di tanda',
             'pic_name.required' => 'Ruangan ini perlu di isi',
-            'pic_phone.required' => 'Ruangan ini perlu di isi dengan nombor sahaja. cth:01XXXXXXXX\'',
+            'pic_phone.required.integer' => 'Ruangan ini perlu di isi dengan nombor sahaja. cth:01XXXXXXXX\'',
             'fc_name.required' => 'Ruangan ini perlu di isi',
             'fc_phone.required' => 'Ruangan ini perlu di isi dengan nombor sahaja. cth:01XXXXXXXX\'',
             'premise_type_id.required' => 'Pilihan perlu di tanda',

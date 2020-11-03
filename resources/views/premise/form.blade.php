@@ -56,7 +56,7 @@
             <div class="form-row col-md-8">
                 <div class="form-group col-md-4">
                     <label class="ul-form__label">Nombor Telefon:</label>
-                    <input type="number" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" placeholder="No. telefon">
+                    <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" placeholder="No. telefon">
                     @error('phone_number')
                     <div class="ul-form__text form-text text-danger">{{ $message }}</div>
                     @enderror
@@ -64,7 +64,7 @@
 
                 <div class="form-group col-md-4">
                     <label class="ul-form__label">Nombor Fax:</label>
-                    <input type="number" class="form-control @error('fax_number') is-invalid @enderror" name="fax_number" value="{{ old('fax_number') }}" placeholder="No. fax">
+                    <input type="text" class="form-control @error('fax_number') is-invalid @enderror" name="fax_number" value="{{ old('fax_number') }}" placeholder="No. fax">
                     @error('fax_number')
                     <div class="ul-form__text form-text text-danger">{{ $message }}</div>
                     @enderror

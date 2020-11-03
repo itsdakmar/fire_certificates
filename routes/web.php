@@ -29,6 +29,9 @@ Route::get('/application/data', 'FcApplicationController@data')->name('applicati
 Route::post('/application/approved/{applicationId}', 'FcApplicationController@approved')->name('application.approved');
 Route::get('/application/approving/{applicationId}', 'FcApplicationController@approving')->name('application.approving');
 
+Route::get('/application/approved/list', 'ApprovedApplicationController@index')->name('approved.list');
+Route::get('/application/approved/data', 'ApprovedApplicationController@data')->name('approved.data');
+
 Route::get('/inspection/create/{applicationId}', 'InspectionController@create')->name('inspection.create');
 
 Route::get('/application/yearly', 'HomeController@applicationYearly')->name('application.yearly');

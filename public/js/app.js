@@ -19451,11 +19451,11 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\laragon\www\fire_certificates\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! c:\laragon\www\fire_certificates\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! c:\laragon\www\fire_certificates\resources\gull\assets\styles\sass\themes\lite-purple.scss */"./resources/gull/assets/styles/sass/themes/lite-purple.scss");
-__webpack_require__(/*! c:\laragon\www\fire_certificates\resources\gull\assets\styles\sass\themes\lite-blue.scss */"./resources/gull/assets/styles/sass/themes/lite-blue.scss");
-module.exports = __webpack_require__(/*! c:\laragon\www\fire_certificates\resources\gull\assets\styles\sass\themes\dark-purple.scss */"./resources/gull/assets/styles/sass/themes/dark-purple.scss");
+__webpack_require__(/*! C:\laragon\www\fire_certificates\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\laragon\www\fire_certificates\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\fire_certificates\resources\gull\assets\styles\sass\themes\lite-purple.scss */"./resources/gull/assets/styles/sass/themes/lite-purple.scss");
+__webpack_require__(/*! C:\laragon\www\fire_certificates\resources\gull\assets\styles\sass\themes\lite-blue.scss */"./resources/gull/assets/styles/sass/themes/lite-blue.scss");
+module.exports = __webpack_require__(/*! C:\laragon\www\fire_certificates\resources\gull\assets\styles\sass\themes\dark-purple.scss */"./resources/gull/assets/styles/sass/themes/dark-purple.scss");
 
 
 /***/ })

@@ -54,7 +54,7 @@ class PremiseController extends Controller
             ]);
 
 
-        return redirect()->route('premise.index')->with('status', 'Pembukaan Fail Berjaya!');
+        return redirect()->route('premise.index')->with('status', 'Premis Baru Berjaya Di Tambah!');
 
         }
 

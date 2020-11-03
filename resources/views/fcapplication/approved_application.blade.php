@@ -4,6 +4,11 @@
 @endsection
 @section('main-content')
 
+    <div class="row justify-content-end">
+        <div class="col px-0 mb-4">
+            <a href="{{ route('email.notify') }}" class="btn btn-primary">Hantar Notifikasi (E-mel)</a>
+        </div>
+    </div>
 
     @if (session('status'))
         <div class="row">
@@ -27,8 +32,8 @@
                         <tr>
                             <th scope="col">Nama Premis</th>
                             <th scope="col">Kategori</th>
-                            <th scope="col">Tarikh Mohon</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Tarikh Tamat FC</th>
+                            <th scope="col">Bil. Hari Sebelum Tarikh Tamat</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -49,7 +54,7 @@
                 serverSide: true,
                 order: [[ 3, "asc" ]],
                 ajax: {
-                    url: '{{ route('application.data') }}'
+                    url: '{{ route('approved.data') }}'
                 },
                 columns: [
                     {
@@ -61,13 +66,12 @@
                         name: 'premise_detail.premise_category.name',
                     },
                     {
-                        data: 'apply_date',
-                        name: 'apply_date',
+                        data: 'expiry_date',
+                        name: 'expiry_date',
                     },
                     {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false
+                        data: 'countdown',
+                        name: 'countdown',
                     }
                 ],
 
@@ -84,6 +88,16 @@
                         columns: ':not(.noVis)'
                     }
                 ],
+
+                createdRow: function ( row, data, index ) {
+                    if ( parseInt(data['countdown']) == 0 ) {
+                        $(row).css({'background' : '#f8d7da'});
+                    }
+                    else if ( parseInt(data['countdown']) <= 5 ) {
+                        $(row).css({'background' : '#fff3cd'});
+                    }
+
+                }
             });
 
 

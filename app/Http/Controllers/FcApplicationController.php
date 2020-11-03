@@ -43,13 +43,8 @@ class FcApplicationController extends Controller
         return view('fcapplication.create', compact('fcapplications', 'premisedetails'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ApplicationStoreRequest $request)
+
+    public function store(Request $request)
     {
 
         $fcapplications = FcApplication::create([
@@ -137,14 +132,15 @@ class FcApplicationController extends Controller
     {
         $fc_application = FcApplication::findOrFail($fc_application_id);
         $approved_date = Carbon::parse($request->approved_date__submit);
-        $expired_date = $approved_date->copy()->addYear();
+        $expired_date = $approved_date->copy()->addYear()->subDay();
         $now = Carbon::now()->timezone('Asia/Kuala_Lumpur')->toDateTimeString();
 
         $fc_application->update([
             'status' => 4,
-            'approved_date' => $approved_date,
+            'approved_date' => Carbon::parse($request->approved_date__submit),
             'expiry_date' => $expired_date
         ]);
+
 
         $threeMonthBefore = $expired_date->copy()->subMonths('3');
         $oneMonthBefore = $expired_date->copy()->subMonths('1');
@@ -187,23 +183,14 @@ class FcApplicationController extends Controller
 
         $data = FcApplication::with('premiseDetail','premiseDetail.premiseCategory')
             ->orderBy('expiry_date', 'ASC')
+            ->whereNull('approved_date')
             ->get();
 
 
         return DataTables::of($data)
-            ->editColumn('expiry_date', function ($datum)
+            ->editColumn('apply_date', function ($datum)
             {
-                return date('d F Y', strtotime($datum->expiry_date));
-            })
-            ->addColumn('countdown', function ($datum) {
-                $now = Carbon::now()->timezone('Asia/Kuala_Lumpur');
-                $expired_date = Carbon::parse($datum->expiry_date);
-
-                if($now > $expired_date){
-                    return '0 - Telah Tamat Tempoh';
-                }else {
-                    return ($now->diffInDays($expired_date) + 1).' Hari Lagi';
-                }
+                return date('d F Y', strtotime($datum->apply_date));
             })
             ->addColumn('action', function ($datum) {
                /* return '';*/
