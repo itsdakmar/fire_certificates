@@ -26,9 +26,7 @@ class ApplicationStoreRequest extends FormRequest
         return [
             'apply_date' => 'required',
             'type' => 'required',
-            'expiry_date' => 'required',
-            'no_siri' => 'required',
-            'premise_detail_id' => 'required',
+            'premise_detail_id' => 'required'
         ];
     }
 
@@ -37,8 +35,6 @@ class ApplicationStoreRequest extends FormRequest
         return [
             'apply_date.required' => 'Ruangan ini perlu di isi',
             'type.required' => 'Pilihan perlu di tanda',
-            'expiry_date.required' => 'Ruangan ini perlu di isi',
-            'no_siri.required' => 'Ruangan ini perlu di isi',
             'premise_detail_id.required' => 'Ruangan ini perlu di isi'
         ];
     }

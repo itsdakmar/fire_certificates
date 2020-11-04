@@ -22,11 +22,14 @@
         <div class="col px-0">
             <div class="card">
                 <div class="card-body">
+                    <h3>Senarai Premis Belum Lulus Permohonan FC</h3><br/>
                     <table class="display table table-striped table-bordered" id="application-table">
                         <thead>
                         <tr>
-                            <th scope="col">Nama Premis</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Alamat</th>
                             <th scope="col">Kategori</th>
+                            <th scope="col">Jenis</th>
                             <th scope="col">Tarikh Mohon</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -57,8 +60,16 @@
                         name: 'premise_detail.name',
                     },
                     {
+                        data: 'premise_detail.address',
+                        name: 'premise_detail.address',
+                    },
+                    {
                         data: 'premise_detail.premise_category.name',
                         name: 'premise_detail.premise_category.name',
+                    },
+                    {
+                        data: 'premise_detail.premise_type.name',
+                        name: 'premise_detail.premise_type.name',
                     },
                     {
                         data: 'apply_date',

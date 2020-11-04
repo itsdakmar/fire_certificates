@@ -46,19 +46,19 @@
                         <ul class="mm-collapse">
                             <li class="item-name">
                                 <a href="{{ route('application.create') }}">
-                                    <i class="nav-icon i-File"></i>
+                                    <i class="nav-icon i-Data-Upload"></i>
                                     <span class="item-name">Buka Fail Baharu</span>
                                 </a>
                             </li>
                             <li class="item-name">
                                 <a href="{{ route('application.index') }}">
-                                    <i class="nav-icon i-File"></i>
+                                    <i class="nav-icon i-Close"></i>
                                     <span class="item-name">Senarai Fail Belum Lulus</span>
                                 </a>
                             </li>
                             <li class="item-name">
                                 <a href="{{ route('approved.list') }}">
-                                    <i class="nav-icon i-File"></i>
+                                    <i class="nav-icon i-Yes"></i>
                                     <span class="item-name">Senarai Fail Lulus</span>
                                 </a>
                             </li>

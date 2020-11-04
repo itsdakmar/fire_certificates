@@ -27,6 +27,7 @@
         <div class="col px-0">
             <div class="card">
                 <div class="card-body">
+                    <h3>Senarai Premis Telah Lulus Permohonan FC</h3><br/>
                     <table class="display table table-striped table-bordered" id="application-table">
                         <thead>
                         <tr>

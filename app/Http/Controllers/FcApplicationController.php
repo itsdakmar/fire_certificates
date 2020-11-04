@@ -44,28 +44,28 @@ class FcApplicationController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ApplicationStoreRequest $request)
     {
 
         $fcapplications = FcApplication::create([
             'apply_date' => Carbon::createFromFormat('d/m/Y', $request->apply_date)->toDateString(),
             'type' => $request->type,
-            'expiry_date' => $request->expiry_date,
             'status' => 1,
-            'no_siri' => $request->no_siri,
             'premise_detail_id' => $request->premise_detail_id
         ]);
 
-        foreach ($request->file('documents') as $document) {
-            $file = Storage::put('documents', $document);
+        if ($request->has('file')) {
+            foreach ($request->file('documents') as $document) {
+                $file = Storage::put('documents', $document);
 
-            $fcapplications->documents()->create([
-                'description' => $request->description,
-                'doc_path' => $file,
-                'type' => $request->doctype,
-                'fc_application_id' => $fcapplications->id
-            ]);
-        }
+                $fcapplications->documents()->create([
+                    'description' => $request->description,
+                    'doc_path' => $file,
+                    'type' => $request->doctype,
+                    'fc_application_id' => $fcapplications->id
+                ]);
+            }
+        } 
 
 
         return redirect()->route('application.index')->with('status', 'Pendafataran Premis Baharu Berjaya!');
@@ -181,8 +181,8 @@ class FcApplicationController extends Controller
 //            return abort('404');
 //        }
 
-        $data = FcApplication::with('premiseDetail','premiseDetail.premiseCategory')
-            ->orderBy('expiry_date', 'ASC')
+        $data = FcApplication::with('premiseDetail','premiseDetail.premiseCategory', 'premiseDetail.premiseType')
+            ->orderBy('apply_date', 'ASC')
             ->whereNull('approved_date')
             ->get();
 
