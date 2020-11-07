@@ -39,6 +39,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    <div class="table-responsive">
                     <table class="display table table-striped table-bordered premise-table" id="premise-table">
                         <thead>
                         <tr>
@@ -52,6 +53,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>

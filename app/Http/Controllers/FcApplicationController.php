@@ -6,8 +6,8 @@ use App\FcApplication;
 use App\Http\Requests\ApplicationStoreRequest;
 use App\Http\Requests\ApprovingApplicationRequest;
 use App\Notice;
-use App\PremiseDetail;
 
+use App\PremiseDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -54,18 +54,21 @@ class FcApplicationController extends Controller
             'premise_detail_id' => $request->premise_detail_id
         ]);
 
-        if ($request->has('file')) {
-            foreach ($request->file('documents') as $document) {
+        if ($request->hasFile('documents')) {
+            foreach ($request->file('documents') as $key => $document) {
+
                 $file = Storage::put('documents', $document);
 
                 $fcapplications->documents()->create([
-                    'description' => $request->description,
+                    'description' => $request->description[$key],
                     'doc_path' => $file,
                     'type' => $request->doctype,
                     'fc_application_id' => $fcapplications->id
                 ]);
+
+
             }
-        } 
+        }
 
 
         return redirect()->route('application.index')->with('status', 'Pendafataran Premis Baharu Berjaya!');

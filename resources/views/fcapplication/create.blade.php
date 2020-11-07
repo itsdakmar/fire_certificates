@@ -87,7 +87,7 @@
                                 </small>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="inputtext4" name="description">
+                                <input type="text" class="form-control" id="inputtext4" name="description[]">
                                 <small id="passwordHelpBlock" class="ul-form__text form-text ">
                                     Deskripsi ringkas fail yang dimuat naik.
                                 </small>
@@ -186,7 +186,7 @@
                 '                                </small>\n' +
                 '                            </td>\n' +
                 '                            <td>\n' +
-                '                                <input type="text" class="form-control" id="inputtext4" name="description">\n' +
+                '                                <input type="text" class="form-control" id="inputtext4" name="description[]">\n' +
                 '                                <small id="passwordHelpBlock" class="ul-form__text form-text ">\n' +
                 '                                    Deskripsi ringkas fail yang dimuat naik.\n' +
                 '                                </small>\n' +
