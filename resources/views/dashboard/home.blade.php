@@ -41,7 +41,7 @@
     <div class="col-lg-12 col-md-12">
         <div class="card mb-4">
             <div class="card-body">
-                <div class="card-title">Jumlah Premis Dengan Sijil Perakuan Bakal Tamat Tempoh (Bulanan)</div>
+                <div class="card-title">Jumlah Premis Dengan Sijil Perakuan Mengikut Tarikh Tamat Tempoh (Bulanan)</div>
                 <canvas class="my-4" id="myChart" height="100px"></canvas>
             </div>
         </div>

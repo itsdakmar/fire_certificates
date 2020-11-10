@@ -42,6 +42,13 @@
                             <button type="button" name="filter" id="filter" class="btn btn-primary">Cari</button>
                             <button type="button" name="refresh" id="refresh" class="btn btn-default">Refresh</button>
                         </div>
+
+                        <div class="ml-8">
+                            <small class="ul-form__text form-text font-italic ">
+                                Pilihan tarikh adalah berdasarkan tarikh tamat tempoh.
+                            </small>
+                        </div>
+
                     </div><br/>
 
                     <table class="display table table-striped table-bordered" id="report_table">
