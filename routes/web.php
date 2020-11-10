@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use Illuminate\Support\Facades\Storage;
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -50,6 +53,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/notify/send', 'PremiseController@notify')->name('email.notify');
 
     Route::get('/report', 'ReportController@index')->name('report.index');
+
+    Route::get('/download', function () {
+        return Storage::download('format-excel.xlsx');
+    });
+
 });
 
 

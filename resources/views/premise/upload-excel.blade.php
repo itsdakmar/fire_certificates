@@ -43,7 +43,9 @@
                     <ul>
                         <li>Kesemua lajur <b>perlu</b> ada.</li>
                         <li>Pastikan <b>kod kategori</b> bagi setiap premis adalah tepat.</li>
+                        <li>Klik butang <b>Muat Turun</b> dibawah bagi memuat turun format dokumen Excel.</li>
                     </ul>
+                    <a href="{{ url('/download') }}" class="btn btn-outline-primary">Muat Turun</a><br>
 
                 <img class="p-4" style="width: 1000px" src="{{ asset('assets/images/format-excel.png') }}" alt="">
                 </div>
