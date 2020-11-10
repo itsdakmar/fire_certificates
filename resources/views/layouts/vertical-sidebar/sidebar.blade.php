@@ -18,25 +18,24 @@
                 <ul class="metismenu" id="menu">
                     <li class="Ul_li--hover">
                         <a class=" " href="{{ route('dashboard') }}">
-                            <i class="i-Home-Window text-20 mr-2 text-muted"></i>
+                            <i class="i-Home1 text-20 mr-2 text-muted"></i>
                             <span class="item-name  text-muted">Laman Utama</span>
                         </a>
                     </li>
-                    <li class="Ul_li--hover {{ (request()->path() == 'premise') ? 'mm-active' : '' }}" >
-                        <a class="has-arrow" href="#">
-                            <i class="i-Building text-20 mr-2 text-muted"></i>
-                            <span class="item-name  text-muted">Premis</span>
+                    <li class="Ul_li--hover">
+                        <a class=" " href="{{ route('premise.excel') }}">
+                            <i class="i-Download text-20 mr-2 text-muted"></i>
+                            <span class="item-name  text-muted">Muat Naik</span>
                         </a>
-                        <ul class="mm-collapse">
-                            <li class="item-name">
-                                <a href="{{ route('premise.index') }}">
-                                    <i class="nav-icon i-Data"></i>
-                                    <span class="item-name">Maklumat Premis</span>
-                                </a>
-                            </li>
-
-                        </ul>
                     </li>
+
+                    <li class="Ul_li--hover">
+                        <a class=" " href="{{ route('premise.index') }}">
+                            <i class="i-Check text-20 mr-2 text-muted"></i>
+                            <span class="item-name  text-muted">Senarai Premis</span>
+                        </a>
+                    </li>
+
                     <li class="Ul_li--hover {{ (request()->path() == 'application') ? 'mm-active' : '' }}">
                         <a class="has-arrow" href="#">
                             <i class="i-Library text-20 mr-2 text-muted"></i>
@@ -44,34 +43,28 @@
                             <span class="item-name  text-muted">Fail</span>
                         </a>
                         <ul class="mm-collapse">
-                            <li class="item-name">
-                                <a href="{{ route('application.create') }}">
-                                    <i class="nav-icon i-Data-Upload"></i>
-                                    <span class="item-name">Buka Fail Baharu</span>
-                                </a>
-                            </li>
-                            <li class="item-name">
+                            {{--<li class="item-name">
                                 <a href="{{ route('application.index') }}">
                                     <i class="nav-icon i-Close"></i>
-                                    <span class="item-name">Senarai Fail Belum Lulus</span>
+                                    <span class="item-name">Senarai Belum Lulus</span>
                                 </a>
-                            </li>
+                            </li>--}}
                             <li class="item-name">
                                 <a href="{{ route('approved.list') }}">
                                     <i class="nav-icon i-Yes"></i>
-                                    <span class="item-name">Senarai Fail Lulus</span>
+                                    <span class="item-name">Senarai Lulus</span>
                                 </a>
                             </li>
                     </li>
 
                 </ul>
 
-                    <li class="Ul_li--hover">
+                    {{--<li class="Ul_li--hover">
                         <a class="" href="{{ route('report.index') }}">
                         <i class="i-Bar-Chart mr-2 text-muted"></i>
                         <span class="item-name  text-muted">Laporan</span>
                         </a>
-                        </li>
+                        </li>--}}
                 </li>
                     <li class="Ul_li--hover">
                         <a class="has-arrow">
@@ -95,12 +88,12 @@
                                     @csrf
                                 </form>
                             </li>
-                            <li class="item-name">
+                          {{--  <li class="item-name">
                                 <a href="#">
                                     <i class="nav-icon i-Add-User"></i>
                                     <span class="item-name">Kemaskini Profil</span>
                                 </a>
-                            </li>
+                            </li>--}}
 
                         </ul>
                     </li>

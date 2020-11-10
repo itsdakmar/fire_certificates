@@ -16,5 +16,11 @@ class UserSeeder extends Seeder
             'password' => \Illuminate\Support\Facades\Hash::make('secret'),
             'email' => 'admin@firecert.com'
         ]);
+
+        \App\User::create([
+            'name' => 'Pegawai 1',
+            'password' => \Illuminate\Support\Facades\Hash::make('secret'),
+            'email' => 'shuhada@firecert.com'
+        ]);
     }
 }

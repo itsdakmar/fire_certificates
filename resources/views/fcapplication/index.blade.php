@@ -95,6 +95,16 @@
                         columns: ':not(.noVis)'
                     }
                 ],
+
+                createdRow: function ( row, data, index ) {
+                    if ( parseInt(data['countdown']) == 0 ) {
+                        $(row).css({'background' : '#f8d7da'});
+                    }
+                    else if ( parseInt(data['countdown']) <= 5 ) {
+                        $(row).css({'background' : '#fff3cd'});
+                    }
+
+                }
             });
 
 

@@ -16,24 +16,39 @@
                 <form method="post" action="{{ route('premise.upload') }}" enctype="multipart/form-data">
                     <div class="card-body">
                         @csrf
+                        <h5 class="font-italic">Dokumen berbentuk Excel yang ingin dimuat naik mestilah mengikut format yang telah ditetapkan.</h5><br>
+
                         <div class="custom-file">
                             <input type="file" name="premise" class="custom-file-input" id="customFile"
                                    accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <label class="custom-file-label" for="customFile">Pilih fail</label>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="mc-footer">
                             <div class="row text-center">
                                 <div class="col-lg-12 ">
-                                    <button type="submit" class="btn btn-primary m-1">Save</button>
-                                    <button type="button" class="btn btn-outline-secondary m-1">Cancel</button>
+                                    <button type="submit" class="btn btn-primary m-1">Simpan</button>
+                                    <a type="button" href="{{ route('dashboard') }}" class="btn btn-outline-secondary m-1">Batal</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
+
+            <div class="card mt-3">
+                <div class="card-body">
+                <h5>Format Dokumen</h5>
+                    <ul>
+                        <li>Kesemua lajur <b>perlu</b> ada.</li>
+                        <li>Pastikan <b>kod kategori</b> bagi setiap premis adalah tepat.</li>
+                    </ul>
+
+                <img class="p-4" style="width: 1000px" src="{{ asset('assets/images/format-excel.png') }}" alt="">
+                </div>
+            </div>
+
         </div>
     </div>
     @isset($imports)

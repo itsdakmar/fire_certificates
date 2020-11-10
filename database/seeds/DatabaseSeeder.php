@@ -17,6 +17,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@firecert.com'
         ]);
 
+        \App\User::create([
+            'name' => 'Pegawai 1',
+            'password' => \Illuminate\Support\Facades\Hash::make('secret'),
+            'email' => 'shuhada@firecert.com'
+        ]);
+
         $this->call(PremiseTypeSeeder::class);
         $this->call(PremiseCategorySeeder::class);
         $this->call(ZoneSeeder::class);

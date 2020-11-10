@@ -78,12 +78,16 @@ class PremiseController extends Controller
 
         $data = PremiseDetail::with('office','premiseCategory','premiseType')->latest()->get();
         return DataTables::of($data)
-            ->addColumn('action', function($data){
-                return '';
-//                $button = '<button type="button" id="'.$data->id.'" class="btn btn-primary ripple m-1">Primary</button>';
-//                return $button;
+            ->editColumn('ert', function ($datum)
+            {
+                if ($datum->ert == '1') {
+                    return 'ADA';
+                }
+                else
+                {
+                    return 'TIADA';
+                }
             })
-            ->rawColumns(['action'])
             ->make(true);
     }
 

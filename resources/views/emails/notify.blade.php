@@ -1,10 +1,10 @@
 @component('mail::message')
-# Notification from jabatan bomba melaka.
+Notifikasi Tamat Tempoh Bagi Premis Dengan Sijil Perakuan BOMBA
 
-Fire certificate for premise <b>{{ $premise_name }}</b> will expired on <b>{{ $expired_date }}</b>.
+Adalah dimaklumkan bahawa premis, <b>{{ $premise_name }}</b>, dengan Sijil Perakuan akan tamat tempoh pada <b>{{ $expired_date }}</b>.
 <br>
-{{--Total amount need to pay is : <b>RM {{ $total }}</b>--}}
 
-Thanks,<br>
+
+Sekian Harap Maklum,<br>
 JBPM Negeri Melaka
 @endcomponent

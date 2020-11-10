@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('page-css')
     <link rel="stylesheet" href={{ asset('/assets/styles/vendor/datatables.min.css') }}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+
 @endsection
 @section('main-content')
 
@@ -28,7 +30,21 @@
             <div class="card">
                 <div class="card-body">
                     <h3>Senarai Premis Telah Lulus Permohonan FC</h3><br/>
-                    <table class="display table table-striped table-bordered" id="application-table">
+
+                    <div class="row input-daterange">
+                        <div class="col-md-4">
+                            <input type="text" name="from_date" id="from_date" class="form-control" placeholder="Dari Tarikh" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" name="to_date" id="to_date" class="form-control" placeholder="Sehingga Tarikh" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" name="filter" id="filter" class="btn btn-primary">Cari</button>
+                            <button type="button" name="refresh" id="refresh" class="btn btn-default">Refresh</button>
+                        </div>
+                    </div><br/>
+
+                    <table class="display table table-striped table-bordered" id="report_table">
                         <thead>
                         <tr>
                             <th scope="col">Nama Premis</th>
@@ -48,61 +64,79 @@
 
 @section('page-js')
     <script src={{ asset('assets/js/vendor/datatables.min.js') }}></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+
     <script>
-        $(document).ready(function () {
-            $('#application-table').DataTable({
-                processing: true,
-                serverSide: true,
-                order: [[ 3, "asc" ]],
-                ajax: {
-                    url: '{{ route('approved.data') }}'
-                },
-                columns: [
-                    {
-                        data: 'premise_detail.name',
-                        name: 'premise_detail.name',
-                    },
-                    {
-                        data: 'premise_detail.premise_category.name',
-                        name: 'premise_detail.premise_category.name',
-                    },
-                    {
-                        data: 'expiry_date',
-                        name: 'expiry_date',
-                    },
-                    {
-                        data: 'countdown',
-                        name: 'countdown',
-                    }
-                ],
+        $(document).ready(function(){
+            $('.input-daterange').datepicker({
+                todayBtn:'linked',
+                format:'yyyy-mm-dd',
+                autoclose:true
+            });
 
-                dom: 'Bfrtip',
-                columnDefs: [
-                    {
-                        targets: 1,
-                        className: 'noVis'
-                    }
-                ],
-                buttons: [
-                    {
-                        extend: 'colvis',
-                        columns: ':not(.noVis)'
-                    }
-                ],
+            load_data();
 
-                createdRow: function ( row, data, index ) {
-                    if ( parseInt(data['countdown']) == 0 ) {
-                        $(row).css({'background' : '#f8d7da'});
-                    }
-                    else if ( parseInt(data['countdown']) <= 5 ) {
-                        $(row).css({'background' : '#fff3cd'});
-                    }
+            function load_data(from_date = '', to_date = '')
+            {
+                $('#report_table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    order: [[ 3, "asc" ]],
+                    ajax: {
+                        url:'{{ route("approved.data") }}',
+                        data:{from_date:from_date, to_date:to_date}
+                    },
+                    columns: [
+                        {
+                            data: 'premise_detail.name',
+                            name: 'premise_detail.name',
+                        },
+                        {
+                            data: 'premise_detail.premise_category.name',
+                            name: 'premise_detail.premise_category.name',
+                        },
+                        {
+                            data: 'expiry_date',
+                            name: 'expiry_date',
+                        },
+                        {
+                            data: 'countdown',
+                            name: 'countdown',
+                        }
+                    ],
 
+                    createdRow: function ( row, data, index ) {
+                        if ( parseInt(data['countdown']) == 0 ) {
+                            $(row).css({'background' : '#f8d7da'});
+                        }
+                        else if ( parseInt(data['countdown']) <= 5 ) {
+                            $(row).css({'background' : '#fff3cd'});
+                        }
+
+                    }
+                });
+            }
+
+            $('#filter').click(function(){
+                var from_date = $('#from_date').val();
+                var to_date = $('#to_date').val();
+                if(from_date != '' &&  to_date != '')
+                {
+                    $('#report_table').DataTable().destroy();
+                    load_data(from_date, to_date);
+                }
+                else
+                {
+                    alert('Both Date is required');
                 }
             });
 
-
-
+            $('#refresh').click(function(){
+                $('#from_date').val('');
+                $('#to_date').val('');
+                $('#report_table').DataTable().destroy();
+                load_data();
+            });
 
         });
     </script>

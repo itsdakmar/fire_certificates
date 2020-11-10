@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col mb-4">
-            <div class="dropdown float-right">
+            {{--<div class="dropdown float-right">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Daftar Premis Baharu
@@ -20,7 +20,7 @@
                         <i class="i-Download-from-Cloud"> </i>
                         Daftar Baharu</a>
                 </div>
-            </div>
+            </div>--}}
         </div>
     </div>
     @if (session('status'))
@@ -44,11 +44,13 @@
                         <thead>
                         <tr>
                             <th scope="col">Nama Premis</th>
+                            <th scope="col">Alamat</th>
                             <th scope="col">No. Telefon</th>
                             <th scope="col">Jenis Premis</th>
                             <th scope="col">Kategori Premis</th>
+                            <th scope="col">ERT</th>
                             <th scope="col">Balai</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Create </th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -68,6 +70,7 @@
             let table = $('#premise-table').DataTable({
                 processing: true,
                 serverSide: true,
+                order: [[ 7, "desc"]],
                 ajax: {
                     url: '{{ route('premise.data') }}'
                 },
@@ -75,6 +78,10 @@
                     {
                         data: 'name',
                         name: 'name',
+                    },
+                    {
+                        data: 'address',
+                        name: 'address',
                     },
                     {
                         data: 'phone_number',
@@ -89,13 +96,17 @@
                         name: 'premise_category.name',
                     },
                     {
+                        data: 'ert',
+                        name: 'ert',
+                    },
+                    {
                         data: 'office.name',
                         name: 'office.name',
                     },
                     {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false
+                        data: 'created_at',
+                        name: 'created_at',
+                        visible: false
                     }
                 ]
             });
