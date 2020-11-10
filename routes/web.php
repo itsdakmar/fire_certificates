@@ -11,7 +11,7 @@
 |
 */
 
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -55,7 +55,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/report', 'ReportController@index')->name('report.index');
 
     Route::get('/download', function () {
-        return Storage::download('format-excel.xlsx');
+        $file = public_path()."/downloads/format-excel.xlsx";
+        $headers = array('Content-Type: application/xlsx',);
+        return Response::download($file, 'format-excel.xlsx',$headers);
+
     });
 
 });
