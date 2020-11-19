@@ -117,6 +117,4 @@ class PremiseController extends Controller
 
         return back()->with('status','Emel Berjaya di hantar!');
     }
-
-
 }

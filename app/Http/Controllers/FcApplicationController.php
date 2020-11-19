@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\FcApplication;
 use App\Http\Requests\ApplicationStoreRequest;
 use App\Http\Requests\ApprovingApplicationRequest;
+use App\Imports\FcImport;
 use App\Notice;
 
 use App\PremiseDetail;
@@ -219,6 +220,21 @@ class FcApplicationController extends Controller
             })
             ->rawColumns(['action'])
             ->make(true);
+    }
+
+    public function excel()
+    {
+        return view('fcapplication.upload-excel');
+    }
+
+    public function upload(Request $request)
+    {
+        $imports = (new FcImport())->import($request->file('fc_application'));
+
+        return 'berjaya';
+//        Ubah route dengan buat view
+//        return redirect()->route('premise.index')->with('status', 'Muat Naik Maklumat Premis Berjaya!');
+
     }
 
 }

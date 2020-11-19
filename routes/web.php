@@ -39,6 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/application/data', 'FcApplicationController@data')->name('application.data');
     Route::post('/application/approved/{applicationId}', 'FcApplicationController@approved')->name('application.approved');
     Route::get('/application/approving/{applicationId}', 'FcApplicationController@approving')->name('application.approving');
+    Route::get('/application/import', 'FcApplicationController@excel')->name('application.excel');
+    Route::post('/application/import', 'FcApplicationController@upload')->name('application.upload');
+
 
     Route::get('/application/approved/list', 'ApprovedApplicationController@index')->name('approved.list');
     Route::get('/application/approved/data', 'ApprovedApplicationController@data')->name('approved.data');

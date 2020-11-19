@@ -23,10 +23,10 @@ class CreatePremiseDetailsTable extends Migration
             $table->string('phone_number');
             $table->string('fax_number');
             $table->boolean('ert')->nullable();
-            $table->string('pic_name');
-            $table->string('pic_phone');
-            $table->string('fc_name');
-            $table->string('fc_phone');
+            $table->string('pic_name')->nullable();
+            $table->string('pic_phone')->nullable();
+            $table->string('fc_name')->nullable();
+            $table->string('fc_phone')->nullable();
             $table->unsignedBigInteger('premise_type_id');
             $table->unsignedBigInteger('premise_category_id');
             $table->unsignedBigInteger('office_id');

@@ -27,7 +27,7 @@ class PremiseImport implements ToModel, WithStartRow
             return null;
         }
 
-        $premise = PremiseDetail::firstOrCreate(
+        PremiseDetail::firstOrCreate(
             ['name' => $row[1]],
             [
                 'name' => $row[1],
@@ -44,48 +44,6 @@ class PremiseImport implements ToModel, WithStartRow
                 'office_id' => Office::where('name', $row[5])->pluck('id')->first()
             ]
         );
-
-        $now = Carbon::now()->timezone('Asia/Kuala_Lumpur')->toDateTimeString();
-        $expired_date = Carbon::parse(Date::excelToDateTimeObject($row[12]));
-
-        $fc_application = FcApplication::create([
-            'type' => 2,
-            'approved_date' => $expired_date->copy()->subYear(),
-            'expiry_date' => $expired_date,
-            'status' => 1,
-            'no_siri' => uniqid(),
-            'premise_detail_id' => $premise->id
-        ]);
-
-        $threeMonthBefore = $expired_date->copy()->subMonths('3');
-        $oneMonthBefore = $expired_date->copy()->subMonths('1');
-
-        Notice::where('fc_application_id', $fc_application->id)->delete();
-
-        Notice::insert([
-            [
-                'notice_date' => $threeMonthBefore,
-                'fc_application_id' => $fc_application->id,
-                'total_payment' => '0',
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'notice_date' => $oneMonthBefore,
-                'fc_application_id' => $fc_application->id,
-                'total_payment' => '0',
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'notice_date' => $expired_date,
-                'fc_application_id' => $fc_application->id,
-                'total_payment' => '0',
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-        ]);
-
     }
 
     public function startRow(): int
