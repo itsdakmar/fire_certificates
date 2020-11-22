@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/premise/create', 'PremiseController@create')->name('premise.create');
     Route::post('/premise/store', 'PremiseController@store')->name('premise.store');
     Route::post('/premise/getPremise/', 'PremiseController@getPremise')->name('premise.getPremise');
+    Route::get('/premise/{id}', 'PremiseController@show')->name('premise.show');
 
 
     Route::get('/application', 'FcApplicationController@index')->name('application.index');
@@ -57,12 +58,19 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/report', 'ReportController@index')->name('report.index');
 
-    Route::get('/download', function () {
-        $file = public_path()."/downloads/format-excel.xlsx";
+    Route::get('/download/format-premise', function () {
+        $file = public_path()."/downloads/format-premise.xlsx";
         $headers = array('Content-Type: application/xlsx',);
-        return Response::download($file, 'format-excel.xlsx',$headers);
-
+        return Response::download($file, 'format-premis.xlsx',$headers);
     });
+
+    Route::get('/download/format-file', function () {
+        $file = public_path()."/downloads/format-excel-fail.xlsx";
+        $headers = array('Content-Type: application/xlsx',);
+        return Response::download($file, 'format-fail.xlsx',$headers);
+    });
+
+    Route::get('/references', 'ReferenceController@index')->name('references');
 
 });
 

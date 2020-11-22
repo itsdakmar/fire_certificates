@@ -3,24 +3,19 @@
     <link rel="stylesheet" href={{ asset('/assets/styles/vendor/datatables.min.css') }}>
 @endsection
 @section('main-content')
+    @include('components.breadcrumb',[
+        $breadcrumbs = [
+            'Premis',
+            'Senarai Maklumat Premis'
+        ]
+    ])
+    <div class="separator-breadcrumb border-top"></div>
 
     <div class="row">
         <div class="col mb-4">
-            {{--<div class="dropdown float-right">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Daftar Premis Baharu
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="top-start"
-                     style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -118px, 0px);">
-                    <a class="dropdown-item" href="{{ route('premise.excel') }}">
-                        <i class="i-Bell"> </i>
-                        Muat-Naik Excel (.xlsx)</a>
-                    <a class="dropdown-item" href="{{ route('premise.create') }}">
-                        <i class="i-Download-from-Cloud"> </i>
-                        Daftar Baharu</a>
-                </div>
-            </div>--}}
+
+            <a href="{{ route('premise.create') }}" class="btn btn-primary">Daftar Premis Baharu</a>
+
         </div>
     </div>
     @if (session('status'))
@@ -43,6 +38,7 @@
                     <table class="display table table-striped table-bordered premise-table" id="premise-table">
                         <thead>
                         <tr>
+                            <th scope="col" data-orderable="false"> </th>
                             <th scope="col">Nama Premis</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">No. Telefon</th>
@@ -50,6 +46,7 @@
                             <th scope="col">Kategori Premis</th>
                             <th scope="col">ERT</th>
                             <th scope="col">Balai</th>
+                            <th scope="col"> </th>
                             <th scope="col">Create </th>
                         </tr>
                         </thead>
@@ -75,6 +72,10 @@
                     url: '{{ route('premise.data') }}'
                 },
                 columns: [
+                    {
+                      data: 'DT_RowIndex',
+                      name: 'DT_RowIndex',
+                    },
                     {
                         data: 'name',
                         name: 'name',
@@ -102,6 +103,10 @@
                     {
                         data: 'office.name',
                         name: 'office.name',
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
                     },
                     {
                         data: 'created_at',

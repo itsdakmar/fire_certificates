@@ -145,6 +145,7 @@
             <div class="row">
                 <div class="col-lg-12 text-right">
                     <button type="submit" class="btn  btn-primary m-1">Hantar</button>
+                    <a href="{{ route('premise.index') }}" class="btn btn-outline-danger">Batal</a>
                     <button type="reset" class="btn btn-outline-secondary m-1">Tetapkan Semula</button>
                 </div>
             </div>

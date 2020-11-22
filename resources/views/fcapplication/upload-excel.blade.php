@@ -3,7 +3,7 @@
     @include('components.breadcrumb',[
         $breadcrumbs = [
             'Premis',
-            'Maklumat Premis',
+            'Fail Baharu',
             'Muat-Naik Excel (.xlsx)'
         ]
     ])
@@ -30,13 +30,15 @@
                 <form method="post" action="{{ route('application.upload') }}" enctype="multipart/form-data">
                     <div class="card-body">
                         @csrf
-                        <h5 class="font-italic">Dokumen berbentuk Excel yang ingin dimuat naik mestilah mengikut format yang telah ditetapkan.</h5><br>
+
+                        <div class="text-16 mb-2">Muat Naik Fail FC Baharu</div>
 
                         <div class="custom-file">
                             <input type="file" name="fc_application" class="custom-file-input" id="customFile"
                                    accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                             <label class="custom-file-label" for="customFile">Pilih fail</label>
-                        </div>
+                        </div><br>
+                        <small class="font-italic text-danger">*Dokumen berbentuk Excel yang ingin dimuat naik mestilah mengikut format yang telah ditetapkan.</small>
                     </div>
                     <div class="card-footer">
                         <div class="mc-footer">
@@ -56,12 +58,12 @@
                 <h5>Format Dokumen</h5>
                     <ul>
                         <li>Kesemua lajur <b>perlu</b> ada.</li>
-                        <li>Pastikan <b>kod kategori</b> bagi setiap premis adalah tepat.</li>
+                        <li>Pastikan <b>Nama Premis</b> bagi setiap premis adalah tepat.</li>
                         <li>Klik butang <b>Muat Turun</b> dibawah bagi memuat turun format dokumen Excel.</li>
                     </ul>
-                    <a href="{{ url('/download') }}" class="btn btn-outline-primary">Muat Turun</a><br>
+                    <a href="{{ url('/download/format-file') }}" class="btn btn-outline-primary">Muat Turun</a><br>
 
-                <img class="p-4" style="width: 1000px" src="{{ asset('assets/images/format-excel.png') }}" alt="">
+                <img class="p-4" style="width: 50%" src="{{ asset('assets/images/format-excel-file.png') }}" alt="">
                 </div>
             </div>
 

@@ -78,6 +78,7 @@ class PremiseController extends Controller
 
         $data = PremiseDetail::with('office','premiseCategory','premiseType')->latest()->get();
         return DataTables::of($data)
+            ->addIndexColumn()
             ->editColumn('ert', function ($datum)
             {
                 if ($datum->ert == '1') {
@@ -88,6 +89,10 @@ class PremiseController extends Controller
                     return 'TIADA';
                 }
             })
+            ->addColumn('action', function($data) {
+                return '<a href="' . route('premise.show', $data->id) . '"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i></a>';
+            })
+            ->rawColumns(['action'])
             ->make(true);
     }
 
@@ -116,5 +121,10 @@ class PremiseController extends Controller
         Artisan::call('email:notify');
 
         return back()->with('status','Emel Berjaya di hantar!');
+    }
+
+    public function show($id){
+        $premiseDetail =  PremiseDetail::with('premiseCategory', 'premiseType', 'office')->findOrFail($id);
+        return view('premise.show', compact('premiseDetail'));
     }
 }

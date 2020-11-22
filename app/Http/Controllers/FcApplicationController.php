@@ -231,9 +231,8 @@ class FcApplicationController extends Controller
     {
         $imports = (new FcImport())->import($request->file('fc_application'));
 
-        return 'berjaya';
-//        Ubah route dengan buat view
-//        return redirect()->route('premise.index')->with('status', 'Muat Naik Maklumat Premis Berjaya!');
+
+        return redirect()->route('approved.list')->with('status', 'Muat Naik Fail Baharu Berjaya!');
 
     }
 

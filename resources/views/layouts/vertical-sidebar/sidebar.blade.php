@@ -1,9 +1,9 @@
 <!-- start sidebar -->
 <div class="sidebar-panel">
+
     <div class="gull-brand px-3 text-center my-4 d-flex justify-content-center align-items-center">
         <img class="ml-auto" src="{{ asset('assets/images/logo.svg') }}" alt="">
 
-        <!-- <span class=" item-name text-20 text-primary font-weight-700">GULL</span> -->
         <div class="sidebar-compact-switch ml-auto"><span></span></div>
 
     </div>
@@ -22,11 +22,27 @@
                             <span class="item-name  text-muted">Laman Utama</span>
                         </a>
                     </li>
-                    <li class="Ul_li--hover">
-                        <a class=" " href="{{ route('premise.excel') }}">
+
+                    <li class="Ul_li--hover {{ (request()->path() == 'application') ? 'mm-active' : '' }}">
+                        <a class="has-arrow" href="#">
                             <i class="i-Download text-20 mr-2 text-muted"></i>
+
                             <span class="item-name  text-muted">Muat Naik</span>
                         </a>
+                        <ul class="mm-collapse">
+                            <li class="item-name">
+                                <a href="{{ route('premise.excel') }}">
+                                    <i class="nav-icon i-Post-Office"></i>
+                                    <span class="item-name">Premis</span>
+                                </a>
+                            </li>
+                            <li class="item-name">
+                                <a href="{{ route('application.excel') }}">
+                                    <i class="nav-icon i-Folder-Open"></i>
+                                    <span class="item-name">Fail</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="Ul_li--hover">
@@ -36,36 +52,20 @@
                         </a>
                     </li>
 
-                    <li class="Ul_li--hover {{ (request()->path() == 'application') ? 'mm-active' : '' }}">
-                        <a class="has-arrow" href="#">
+                    <li class="Ul_li--hover">
+                        <a class=" " href="{{ route('approved.list') }}">
                             <i class="i-Library text-20 mr-2 text-muted"></i>
-
-                            <span class="item-name  text-muted">Fail</span>
+                            <span class="item-name  text-muted">Fail FC</span>
                         </a>
-                        <ul class="mm-collapse">
-                            {{--<li class="item-name">
-                                <a href="{{ route('application.index') }}">
-                                    <i class="nav-icon i-Close"></i>
-                                    <span class="item-name">Senarai Belum Lulus</span>
-                                </a>
-                            </li>--}}
-                            <li class="item-name">
-                                <a href="{{ route('approved.list') }}">
-                                    <i class="nav-icon i-Yes"></i>
-                                    <span class="item-name">Senarai Lulus</span>
-                                </a>
-                            </li>
                     </li>
 
-                </ul>
-
-                    {{--<li class="Ul_li--hover">
-                        <a class="" href="{{ route('report.index') }}">
-                        <i class="i-Bar-Chart mr-2 text-muted"></i>
-                        <span class="item-name  text-muted">Laporan</span>
+                    <li class="Ul_li--hover">
+                        <a class=" " href="{{ route('references') }}">
+                            <i class="i-Receipt-3 text-20 mr-2 text-muted"></i>
+                            <span class="item-name  text-muted">Rujukan</span>
                         </a>
-                        </li>--}}
-                </li>
+                    </li>
+
                     <li class="Ul_li--hover">
                         <a class="has-arrow">
                             <i class="i-Administrator text-20 mr-2 text-muted"></i>

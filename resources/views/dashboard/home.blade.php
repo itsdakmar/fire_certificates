@@ -14,7 +14,7 @@
     <div class="col-lg-6 col-md-12 col-sm-12">
         <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
             <div class="card-body text-center">
-                <i class="i-Building"></i>
+                <i class="i-Post-Office"></i>
                 <div class="content">
                     <p class="mt-2 mb-0 text-left text-wrap" style="width: 100px">Jumlah Premis</p>
                     <p class="text-primary text-24 text-left line-height-1 mb-2">{{ $countPremises }}</p>
@@ -26,7 +26,7 @@
     <div class="col-lg-6 col-md-12 col-sm-12">
         <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
             <div class="card-body text-center">
-                <i class="i-File-Clipboard"></i>
+                <i class="i-Library"></i>
                 <div class="content">
                     <p class="text-muted mt-2 mb-0 text-left" style="width: 100px">Jumlah Fail</p>
                     <p class="text-primary text-24 text-left line-height-1 mb-2">{{ $countApplications }}</p>
@@ -42,6 +42,18 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="card-title">Jumlah Premis Dengan Sijil Perakuan Mengikut Tarikh Tamat Tempoh (Bulanan)</div>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+
                 <canvas class="my-4" id="myChart" height="100px"></canvas>
             </div>
         </div>

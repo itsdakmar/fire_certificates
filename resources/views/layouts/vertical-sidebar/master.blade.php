@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/styles/vendor/metisMenu.min.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/js/buttons.colVis.min.js">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js">
+    <link rel="icon" href="{{ asset('assets/images/logo.svg') }}" type="image/gif" sizes="16x16">
 
 
 
@@ -47,10 +48,9 @@
 <div class="app-admin-wrap layout-sidebar-vertical sidebar-full">
     @include('layouts.vertical-sidebar.sidebar')
     <div class="main-content-wrap  mobile-menu-content bg-off-white m-0 d-flex flex-column  flex-grow-1">
-        {{--@include('layouts.vertical-sidebar.header')--}}
+       {{-- @include('layouts.vertical-sidebar.header')--}}
 
         <div class="text-lg-right">
-        <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen=""></i>
     </div>
 
         <div class="container-fluid">

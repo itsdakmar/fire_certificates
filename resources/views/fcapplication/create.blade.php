@@ -65,7 +65,7 @@
                             </div>
 
                     </div>
-                    <div class="custom-separator"></div>
+                   {{-- <div class="custom-separator"></div>
                     <div class="card-title">Dokumen Sokongan</div>
 
                     <table class="table table-borderless" id="myTable">
@@ -102,7 +102,7 @@
                                 <button class="btn btn-outline-primary" type="button" id="addBtn">+</button>
                             </td>
                         </tr>
-                    </table>
+                    </table>--}}
 
 
                 </div>

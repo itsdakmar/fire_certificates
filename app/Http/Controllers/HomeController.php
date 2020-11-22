@@ -15,6 +15,7 @@ class HomeController extends Controller
     }
 
     public function index(){
+
         $countPremises = PremiseDetail::count();
         $countApplications = FcApplication::count();
         return view('dashboard.home', compact('countPremises', 'countApplications'));
@@ -36,6 +37,7 @@ class HomeController extends Controller
         $data = DB::table('fc_applications')
             ->select(DB::raw('MONTH(fc_applications.expiry_date) month'), DB::raw('count(fc_applications.id) as total'))
             ->groupBy('month')
+            ->whereYear('expiry_date', '2020')
             ->get()
             ->map(function ($el) {
                 return [

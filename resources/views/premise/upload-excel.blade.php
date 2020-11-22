@@ -2,7 +2,6 @@
 @section('main-content')
     @include('components.breadcrumb',[
         $breadcrumbs = [
-            'Premis',
             'Maklumat Premis',
             'Muat-Naik Excel (.xlsx)'
         ]
@@ -16,13 +15,14 @@
                 <form method="post" action="{{ route('premise.upload') }}" enctype="multipart/form-data">
                     <div class="card-body">
                         @csrf
-                        <h5 class="font-italic">Dokumen berbentuk Excel yang ingin dimuat naik mestilah mengikut format yang telah ditetapkan.</h5><br>
+                        <div class="text-16 mb-2">Muat Naik Maklumat Premis</div>
 
                         <div class="custom-file">
                             <input type="file" name="premise" class="custom-file-input" id="customFile"
                                    accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                             <label class="custom-file-label" for="customFile">Pilih fail</label>
-                        </div>
+                        </div><br/>
+                        <small class="font-italic text-danger">*Dokumen berbentuk Excel yang ingin dimuat naik mestilah mengikut format yang telah ditetapkan.</small>
                     </div>
                     <div class="card-footer">
                         <div class="mc-footer">
@@ -40,55 +40,22 @@
             <div class="card mt-3">
                 <div class="card-body">
                 <h5>Format Dokumen</h5>
-                    <ul>
-                        <li>Kesemua lajur <b>perlu</b> ada.</li>
+                    <ol>
+                        <li>Kesemua lajur bertanda <small class="text-danger">*</small> <b>perlu</b> ada.</li>
                         <li>Pastikan <b>kod kategori</b> bagi setiap premis adalah tepat.</li>
+                        <li>Sila rujuk halaman <a href="{{ route('references') }}" class="font-weight-bold"><u>Rujukan</u></a> bagi senarai keseluruhan maklumat premis yang diperlukan.</li>
                         <li>Klik butang <b>Muat Turun</b> dibawah bagi memuat turun format dokumen Excel.</li>
-                    </ul>
-                    <a href="{{ url('/download') }}" class="btn btn-outline-primary">Muat Turun</a><br>
+                    </ol>
+                    <a href="{{ url('/download/format-premise') }}" class="btn btn-outline-primary">Muat Turun</a><br>
 
-                <img class="p-4" style="width: 1000px" src="{{ asset('assets/images/format-excel.png') }}" alt="">
+                <img class="p-4" style="width: 100%" src="{{ asset('assets/images/format-premise-detail.png') }}" alt=""><br/>
+
                 </div>
+
             </div>
 
         </div>
     </div>
-    @isset($imports)
-        <div class="row mt-4">
-            <div class="col px-0">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td>Kod premis</td>
-                                    <td>Nama premis</td>
-                                    <td>Alamat premis</td>
-                                    <td>Jenis premis</td>
-                                    <td>ERT (Ada/Tiada)</td>
-                                    <td>Balai</td>
-                                    <td>Tarikh Mohon</td>
-                                    <td>No. Telefon</td>
-                                    <td>No. Fax</td>
-                                    <td>PIC</td>
-                                    <td>No. Telefon PIC</td>
-                                    <td>FC</td>
-                                    <td>No. Telefon FC</td>
-                                </tr>
-                                @foreach($imports[0] as $key => $import)
-                                </tr>
-                                    @foreach($import as $premise)
-                                        <td>{{ $premise }}</td>
-                                    @endforeach
-                                </tr>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endisset
 
 @endsection
 
