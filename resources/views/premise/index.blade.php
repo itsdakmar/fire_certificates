@@ -39,6 +39,7 @@
                         <thead>
                         <tr>
                             <th scope="col" data-orderable="false"> </th>
+                            <th scope="col">No. Rujukan</th>
                             <th scope="col">Nama Premis</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">No. Telefon</th>
@@ -46,7 +47,7 @@
                             <th scope="col">Kategori Premis</th>
                             <th scope="col">ERT</th>
                             <th scope="col">Balai</th>
-                            <th scope="col"> </th>
+                            <th scope="col" data-orderable="false"> </th>
                             <th scope="col">Create </th>
                         </tr>
                         </thead>
@@ -75,6 +76,10 @@
                     {
                       data: 'DT_RowIndex',
                       name: 'DT_RowIndex',
+                    },
+                    {
+                        data: 'no_fail',
+                        name: 'no_fail',
                     },
                     {
                         data: 'name',

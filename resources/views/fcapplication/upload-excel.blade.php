@@ -57,13 +57,14 @@
                 <div class="card-body">
                 <h5>Format Dokumen</h5>
                     <ul>
-                        <li>Kesemua lajur <b>perlu</b> ada.</li>
-                        <li>Pastikan <b>Nama Premis</b> bagi setiap premis adalah tepat.</li>
+                        <li>Lajur <b>No. Rujukan & Tarikh Tamat FC</b> wajib diisi (Ruangan nama premis boleh dibiarkan kosong).</li>
+                        <li>Pastikan <b>No. Rujukan</b> bagi setiap premis adalah tepat.</li>
+                        <li>Format bagi ruangan tarikh ialah <b>DD/MM/YYYY</b></li>
                         <li>Klik butang <b>Muat Turun</b> dibawah bagi memuat turun format dokumen Excel.</li>
                     </ul>
                     <a href="{{ url('/download/format-file') }}" class="btn btn-outline-primary">Muat Turun</a><br>
 
-                <img class="p-4" style="width: 50%" src="{{ asset('assets/images/format-excel-file.png') }}" alt="">
+                <img class="p-4" style="width: 50%" src="{{ asset('assets/images/format-file.png') }}" alt="">
                 </div>
             </div>
 

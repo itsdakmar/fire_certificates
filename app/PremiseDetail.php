@@ -29,7 +29,7 @@ class PremiseDetail extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -37,7 +37,7 @@ class PremiseDetail extends Model
     /**
      * @var array
      */
-    protected $fillable = ['premise_type_id', 'premise_category_id', 'office_id', 'name', 'address', 'phone_number', 'fax_number', 'ert', 'pic_name', 'pic_phone', 'fc_name', 'fc_phone', 'created_at', 'updated_at'];
+    protected $fillable = ['no_fail','premise_type_id', 'premise_category_id', 'office_id', 'name', 'address', 'phone_number', 'fax_number', 'ert', 'pic_name', 'pic_phone', 'fc_name', 'fc_phone', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

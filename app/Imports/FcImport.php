@@ -30,12 +30,12 @@ class FcImport implements ToModel, WithStartRow
         }
 
         $now = Carbon::now()->timezone('Asia/Kuala_Lumpur')->toDateTimeString();
-        $expired_date = Carbon::parse(Date::excelToDateTimeObject($row[1]));
+        $expired_date = Carbon::parse(Date::excelToDateTimeObject($row[2]));
 
-        $premise = PremiseDetail::where('name', $row[0])->first();
+        $premise = PremiseDetail::where('no_fail', $row[0])->first();
 
         if (is_null($premise)) {
-            throw ValidationException::withMessages(['premise' => 'Premise '.$row[0].' tidak wujud. Sila pastikan nama yang telah didaftar kan sama atau daftar premis terlebih dahulu.']);
+            throw ValidationException::withMessages(['premise' => 'No fail '.$row[0].' tidak wujud. Sila pastikan premis telah didaftarkan.']);
         }
 
         $fc_application = FcApplication::create([

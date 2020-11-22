@@ -7,6 +7,7 @@ use App\Notice;
 use App\Office;
 use App\PremiseDetail;
 use Carbon\Carbon;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -27,9 +28,16 @@ class PremiseImport implements ToModel, WithStartRow
             return null;
         }
 
-        PremiseDetail::firstOrCreate(
+        $office = Office::where('name', $row[5])->pluck('id')->first();
+
+        if(is_null($office)){
+                throw ValidationException::withMessages(['office' => 'Balai '.$row[5].' tidak wujud. Sila pastikan nama yang telah didaftarkan.']);
+        }
+
+        $premise = PremiseDetail::firstOrCreate(
             ['name' => $row[1]],
             [
+                'no_fail' => 'null',
                 'name' => $row[1],
                 'address' => $row[2],
                 'phone_number' => $row[6],
@@ -44,6 +52,9 @@ class PremiseImport implements ToModel, WithStartRow
                 'office_id' => Office::where('name', $row[5])->pluck('id')->first()
             ]
         );
+
+        $premise->no_fail = sprintf("A%04d", $premise->id);
+        $premise->save();
     }
 
     public function startRow(): int

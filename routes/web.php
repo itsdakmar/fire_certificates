@@ -59,13 +59,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/report', 'ReportController@index')->name('report.index');
 
     Route::get('/download/format-premise', function () {
-        $file = public_path()."/downloads/format-premise.xlsx";
+        $file = public_path()."/downloads/format-premis.xlsx";
         $headers = array('Content-Type: application/xlsx',);
         return Response::download($file, 'format-premis.xlsx',$headers);
     });
 
     Route::get('/download/format-file', function () {
-        $file = public_path()."/downloads/format-excel-fail.xlsx";
+        $file = public_path()."/downloads/format-file.xlsx";
         $headers = array('Content-Type: application/xlsx',);
         return Response::download($file, 'format-fail.xlsx',$headers);
     });
