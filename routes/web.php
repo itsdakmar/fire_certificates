@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/inspection/create/{applicationId}', 'InspectionController@create')->name('inspection.create');
 
-    Route::get('/application/yearly', 'HomeController@applicationYearly')->name('application.yearly');
+    Route::get('/application/yearly/{year}', 'HomeController@applicationYearly')->name('application.yearly');
     Route::get('/premise/category', 'HomeController@premiseCategory')->name('premise.category');
 
 

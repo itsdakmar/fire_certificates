@@ -18,7 +18,8 @@ class HomeController extends Controller
 
         $countPremises = PremiseDetail::count();
         $countApplications = FcApplication::count();
-        return view('dashboard.home', compact('countPremises', 'countApplications'));
+        $years = FcApplication::select(DB::raw('YEAR(expiry_date) as year'))->pluck('year');
+        return view('dashboard.home', compact('countPremises', 'countApplications','years'));
     }
 /*
     public function premiseCategory()
@@ -32,12 +33,12 @@ class HomeController extends Controller
         return response()->json($data);
     }*/
 
-    public function applicationYearly()
+    public function applicationYearly($year = null)
     {
         $data = DB::table('fc_applications')
             ->select(DB::raw('MONTH(fc_applications.expiry_date) month'), DB::raw('count(fc_applications.id) as total'))
             ->groupBy('month')
-            ->whereYear('expiry_date', '2020')
+            ->whereYear('expiry_date', (!empty($year)) ? $year : date('Y'))
             ->get()
             ->map(function ($el) {
                 return [

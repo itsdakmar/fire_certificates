@@ -43,15 +43,14 @@
             <div class="card-body">
                 <div class="card-title">Jumlah Premis Dengan Sijil Perakuan Mengikut Tarikh Tamat Tempoh (Bulanan)</div>
 
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown button
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                <div class="form-group col-md-4">
+                    <label class="ul-form__label">Pilih Tahun:</label>
+                    <select class="custom-select @error('office_id') is-invalid @enderror" id="selectYear">
+                        <option value="">Sila pilih tahun</option>
+                        @foreach($years as $year)
+                            <option value="{{ route('application.yearly', $year) }}">{{ $year }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <canvas class="my-4" id="myChart" height="100px"></canvas>
@@ -81,14 +80,25 @@
 <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 
 <script>
+    $(document).ready(function (){
+        $('#selectYear').on('change', function (){
+            getData($(this).val()).then(function(data) {
+                generateChart(data);
+            });
+        });
+    })
+
     function getData(url){
         return $.getJSON(url, function(data){
             return data;
         });
     }
 
-    getData("{{ route('application.yearly') }}").then(function(data) {
+    getData("{{ route('application.yearly', date('Y')) }}").then(function(data) {
+        generateChart(data);
+    });
 
+    function generateChart(data) {
         var config = {
             type: 'line',
             data: {
@@ -140,7 +150,7 @@
 
         var ctx = document.getElementById("myChart").getContext('2d');
         window.myLine = new Chart(ctx, config);
-    });
+    }
     </script>
 
 @endsection
