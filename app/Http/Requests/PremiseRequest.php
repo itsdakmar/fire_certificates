@@ -30,10 +30,6 @@ class PremiseRequest extends FormRequest
             'phone_number' => 'required',
             'fax_number' => 'required',
             'ert' => 'required',
-            'pic_name' => 'required',
-            'pic_phone' => 'required',
-            'fc_name' => 'required',
-            'fc_phone' => 'required',
             'premise_type_id' => 'required',
             'premise_category_id' => 'required',
             'office_id' => 'required'

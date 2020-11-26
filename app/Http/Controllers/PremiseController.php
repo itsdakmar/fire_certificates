@@ -37,7 +37,8 @@ class PremiseController extends Controller
 
     public function store(PremiseRequest $request)
     {
-            PremiseDetail::create([
+            $premise = PremiseDetail::create([
+                'no_fail' => 'null',
                 'name' => $request->name,
                 'address' => $request->address,
                 'phone_number' => $request->phone_number,
@@ -50,12 +51,12 @@ class PremiseController extends Controller
                 'premise_type_id' => $request->premise_type_id,
                 'premise_category_id' => $request->premise_category_id,
                 'office_id' => $request->office_id
-
             ]);
 
+        $premise->no_fail = sprintf("A%04d", $premise->id);
+        $premise->save();
 
         return redirect()->route('premise.index')->with('status', 'Premis Baru Berjaya Di Tambah!');
-
         }
 
     public function excel()

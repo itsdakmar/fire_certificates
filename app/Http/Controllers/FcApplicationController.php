@@ -49,30 +49,30 @@ class FcApplicationController extends Controller
     {
 
         $fcapplications = FcApplication::create([
-            'apply_date' => Carbon::createFromFormat('d/m/Y', $request->apply_date)->toDateString(),
+            'expiry_date' => Carbon::createFromFormat('d/m/Y', $request->expiry_date)->toDateString(),
             'type' => $request->type,
             'status' => 1,
             'premise_detail_id' => $request->premise_detail_id
         ]);
 
-        if ($request->hasFile('documents')) {
-            foreach ($request->file('documents') as $key => $document) {
+        $this->approved($fcapplications->id);
 
-                $file = Storage::put('documents', $document);
+//        if ($request->hasFile('documents')) {
+//            foreach ($request->file('documents') as $key => $document) {
+//
+//                $file = Storage::put('documents', $document);
+//
+//                $fcapplications->documents()->create([
+//                    'description' => $request->description[$key],
+//                    'doc_path' => $file,
+//                    'type' => $request->doctype,
+//                    'fc_application_id' => $fcapplications->id
+//                ]);
+//            }
+//        }
 
-                $fcapplications->documents()->create([
-                    'description' => $request->description[$key],
-                    'doc_path' => $file,
-                    'type' => $request->doctype,
-                    'fc_application_id' => $fcapplications->id
-                ]);
 
-
-            }
-        }
-
-
-        return redirect()->route('application.index')->with('status', 'Pendafataran Premis Baharu Berjaya!');
+        return redirect()->route('approved.list')->with('status', 'Perakuan FC Berjaya dicipta!');
 
         }
 
@@ -132,19 +132,18 @@ class FcApplicationController extends Controller
         return view('fcapplication.approving', compact('fc_application'));
     }
 
-    public function approved(ApprovingApplicationRequest $request, $fc_application_id)
+    public function approved($fc_application_id)
     {
         $fc_application = FcApplication::findOrFail($fc_application_id);
-        $approved_date = Carbon::parse($request->approved_date__submit);
-        $expired_date = $approved_date->copy()->addYear()->subDay();
+
+        $expired_date = Carbon::parse($fc_application->expiry_date);
+        $approved_date = $expired_date->copy()->subYear()->subDay();
         $now = Carbon::now()->timezone('Asia/Kuala_Lumpur')->toDateTimeString();
 
         $fc_application->update([
             'status' => 4,
-            'approved_date' => Carbon::parse($request->approved_date__submit),
-            'expiry_date' => $expired_date
+            'approved_date' => Carbon::parse($approved_date),
         ]);
-
 
         $threeMonthBefore = $expired_date->copy()->subMonths('3');
         $oneMonthBefore = $expired_date->copy()->subMonths('1');
@@ -176,7 +175,7 @@ class FcApplicationController extends Controller
         ]);
 
 
-        return redirect()->route('application.index')->withStatus('Permohonan berjaya diluluskan!');
+        return true;
     }
 
     public function data(Request $request)

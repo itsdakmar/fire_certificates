@@ -8,7 +8,7 @@
 
     <div class="row justify-content-end">
         <div class="col px-0 mb-4">
-            <a href="{{ route('email.notify') }}" class="btn btn-primary">Hantar Notifikasi (E-mel)</a>
+{{--            <a href="{{ route('email.notify') }}" class="btn btn-primary">Hantar Notifikasi (E-mel)</a>--}}
             <a href="{{ route('application.create') }}" class="btn btn-primary">Buka Fail FC Baharu</a>
         </div>
     </div>

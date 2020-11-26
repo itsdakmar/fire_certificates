@@ -24,7 +24,7 @@ class ApplicationStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'apply_date' => 'required',
+            'expiry_date' => 'required',
             'type' => 'required',
             'premise_detail_id' => 'required'
         ];
@@ -33,7 +33,7 @@ class ApplicationStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'apply_date.required' => 'Ruangan ini perlu di isi',
+            'expiry_date.required' => 'Ruangan ini perlu di isi',
             'type.required' => 'Pilihan perlu di tanda',
             'premise_detail_id.required' => 'Ruangan ini perlu di isi'
         ];

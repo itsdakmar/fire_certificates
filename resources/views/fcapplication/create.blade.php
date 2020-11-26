@@ -40,16 +40,16 @@
 
 
                         <div class="form-group col-md-8">
-                            <label>Tarikh Mohon Perakuan</label>
+                            <label>Tarikh Tamat Perakuan FC</label>
                             <div class="input-group">
-                                <input id="picker3" class="form-control datepicker  @error('apply_date') is-invalid @enderror" data-date-format="dd/mm/yyyy" name="apply_date" >
+                                <input id="picker3" class="form-control datepicker  @error('expiry_date') is-invalid @enderror" data-date-format="dd/mm/yyyy" name="expiry_date" >
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <i class="icon-regular i-Calendar-4"></i>
                                     </div>
                                 </div>
                             </div>
-                            @error('apply_date')
+                            @error('expiry_date')
                             <div class="ul-form__text form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>
